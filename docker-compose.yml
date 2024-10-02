@@ -1,0 +1,53 @@
+version: "3.7"
+
+services:
+  node-red:
+    image: nodered/node-red:latest
+    environment:
+      - TZ=Europe/Amsterdam
+    ports:
+      - 1880:1880
+    volumes:
+      - ./node-red-data:/data
+    networks:
+      - penis_network
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=penis
+      - DOCKER_INFLUXDB_INIT_PASSWORD=erection_password
+      - DOCKER_INFLUXDB_INIT_ORG=myorg
+      - DOCKER_INFLUXDB_INIT_BUCKET=mybucket
+    depends_on:
+      - node-red
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+    networks:
+      - penis_network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=penis
+      - GF_SECURITY_ADMIN_PASSWORD=erection_password
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - penis_network
+
+
+volumes:
+  node-red-data:
+  influxdb-data:
+  grafana_data:
+
+networks:
+  penis_network:
