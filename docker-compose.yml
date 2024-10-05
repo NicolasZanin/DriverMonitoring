@@ -10,7 +10,7 @@ services:
     volumes:
       - ./node-red-data:/data
     networks:
-      - penis_network
+      - driver_network
 
   influxdb:
     image: influxdb:2.7
@@ -19,8 +19,8 @@ services:
       - "8086:8086"
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
-      - DOCKER_INFLUXDB_INIT_USERNAME=penis
-      - DOCKER_INFLUXDB_INIT_PASSWORD=erection_password
+      - DOCKER_INFLUXDB_INIT_USERNAME=driver
+      - DOCKER_INFLUXDB_INIT_PASSWORD=driver_password
       - DOCKER_INFLUXDB_INIT_ORG=myorg
       - DOCKER_INFLUXDB_INIT_BUCKET=mybucket
     depends_on:
@@ -28,7 +28,7 @@ services:
     volumes:
       - influxdb-data:/var/lib/influxdb2
     networks:
-      - penis_network
+      - driver_network
 
   grafana:
     image: grafana/grafana:latest
@@ -36,12 +36,12 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GF_SECURITY_ADMIN_USER=penis
-      - GF_SECURITY_ADMIN_PASSWORD=erection_password
+      - GF_SECURITY_ADMIN_USER=driver
+      - GF_SECURITY_ADMIN_PASSWORD=driver_password
     volumes:
       - grafana_data:/var/lib/grafana
     networks:
-      - penis_network
+      - driver_network
 
 
 volumes:
@@ -50,4 +50,4 @@ volumes:
   grafana_data:
 
 networks:
-  penis_network:
+  driver_network:

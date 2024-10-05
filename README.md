@@ -1,13 +1,13 @@
-# The Penis Watch
+# The Driver Monitoring
 
 ## Credential
 
 ### InfluxDB
 
-username: penis   
-password: erection_password
+username: driver   
+password: driver_password
 
 ### Grafana
 
-user: penis  
-password: erection_password
+user: driver  
+password: driver_password
