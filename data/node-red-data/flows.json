@@ -44,7 +44,7 @@
         "type": "function",
         "z": "7d33f045adfa2ce5",
         "name": "function_cardiaque",
-        "func": "let valueC = msg.req.params.valuec;\nlet time = msg.req.params.time;\n\nmsg.payload = {\n    value: valueC,\n    time: time\n};\n\nreturn msg;",
+        "func": "let valueC = Number(msg.req.params.valuec);\nlet time = msg.req.params.time;\n\nmsg.payload = {\n    value: valueC,\n    time: time\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
