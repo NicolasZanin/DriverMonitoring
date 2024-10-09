@@ -1,0 +1,98 @@
+[
+    {
+        "id": "7d33f045adfa2ce5",
+        "type": "tab",
+        "label": "Flux 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0504f462f986c487",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "influx_in",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://influxdb:8086",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "3932fb80003a0cc6",
+        "type": "http in",
+        "z": "7d33f045adfa2ce5",
+        "name": "http_cardiaque",
+        "url": "/app/cardiaque/:valuec/:time",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 180,
+        "wires": [
+            [
+                "80dfcfd3f6475bfe"
+            ]
+        ]
+    },
+    {
+        "id": "80dfcfd3f6475bfe",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_cardiaque",
+        "func": "let valueC = msg.req.params.valuec;\nlet time = msg.req.params.time;\n\nmsg.payload = {\n    value: valueC,\n    time: time\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 180,
+        "wires": [
+            [
+                "ce003374eaa7783a",
+                "0ee71603d9dc2bbf"
+            ]
+        ]
+    },
+    {
+        "id": "ce003374eaa7783a",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug_cardiaque",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "0ee71603d9dc2bbf",
+        "type": "influxdb out",
+        "z": "7d33f045adfa2ce5",
+        "influxdb": "0504f462f986c487",
+        "name": "influx_cardiaque",
+        "measurement": "cardiaque",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "myorg",
+        "bucket": "mybucket",
+        "x": 740,
+        "y": 180,
+        "wires": []
+    }
+]
