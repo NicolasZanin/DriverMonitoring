@@ -94,5 +94,78 @@
         "x": 740,
         "y": 180,
         "wires": []
+    },
+    {
+        "id": "af0aaa9bdcef7077",
+        "type": "http in",
+        "z": "7d33f045adfa2ce5",
+        "name": "http_accelerometer",
+        "url": "/app/accelerometer/:x/:y/:z/:time",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 360,
+        "wires": [
+            [
+                "2a3b84b9e454c694"
+            ]
+        ]
+    },
+    {
+        "id": "2a3b84b9e454c694",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_accelerometer",
+        "func": "let x = Number(msg.req.params.x);\nlet y = Number(msg.req.params.y);\nlet z = Number(msg.req.params.z);\nlet time = msg.req.params.time;\n\nmsg.payload = {\n    value_x: x,\n    value_y: y,\n    value_z: z,\n    time: time\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 360,
+        "wires": [
+            [
+                "8987dda3253a708a",
+                "b836ff4cbe949f16"
+            ]
+        ]
+    },
+    {
+        "id": "8987dda3253a708a",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug_accelerometer",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "b836ff4cbe949f16",
+        "type": "influxdb out",
+        "z": "7d33f045adfa2ce5",
+        "influxdb": "0504f462f986c487",
+        "name": "influx_accelerometer",
+        "measurement": "accelerometer",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "myorg",
+        "bucket": "mybucket",
+        "x": 760,
+        "y": 360,
+        "wires": []
     }
 ]
