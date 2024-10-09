@@ -47,3 +47,8 @@ password: driver_password
 
 user: driver  
 password: driver_password
+
+
+### Étapes de développement
+
+- Première étape : Bouton qui déclenche la "journée" du chauffeur. Cela signifie que le chauffeur déclenche la récupération des données de rythme cardiaque et de l'accélération (accéléromètre) ainsi qu'un chronomètre. Ces données doivent être simulées dans un premier temps jusqu'à avoir une montre connectée. Ces données sont graphées sur Grafana. Au bout de deux heures, le chauffeur est invité à faire une pause.
