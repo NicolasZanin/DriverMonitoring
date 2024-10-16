@@ -23,14 +23,6 @@
         "rejectUnauthorized": true
     },
     {
-        "id": "26b1797a2f299d3c",
-        "type": "ui_tab",
-        "name": "Blinky Driver",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "f02c2e29ba92c8ca",
         "type": "ui_base",
         "theme": {
@@ -126,6 +118,14 @@
                 "py": 0
             }
         }
+    },
+    {
+        "id": "26b1797a2f299d3c",
+        "type": "ui_tab",
+        "name": "Blinky Driver",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "bc962b1e502fdd92",
@@ -282,6 +282,278 @@
         "wires": []
     },
     {
+        "id": "c11185ec76fab4e6",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 1",
+        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 460,
+        "wires": [
+            [
+                "cdc061ab3ea10a11"
+            ]
+        ]
+    },
+    {
+        "id": "697818e5b772060b",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 2",
+        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 460,
+        "wires": [
+            [
+                "f073d5f310fa046e"
+            ]
+        ]
+    },
+    {
+        "id": "f7884997eb84cef4",
+        "type": "split",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 1210,
+        "y": 460,
+        "wires": [
+            [
+                "697818e5b772060b"
+            ]
+        ]
+    },
+    {
+        "id": "68a1524d398b4965",
+        "type": "inject",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 670,
+        "y": 600,
+        "wires": [
+            [
+                "c11185ec76fab4e6",
+                "2a8e1a2a90ea11cc",
+                "4893e5320b72cf77",
+                "75452706d234dade"
+            ]
+        ]
+    },
+    {
+        "id": "2a8e1a2a90ea11cc",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 3",
+        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 520,
+        "wires": [
+            [
+                "a653bc9186e1adbc"
+            ]
+        ]
+    },
+    {
+        "id": "c4b5c56dfa9ed72a",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 4",
+        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 520,
+        "wires": [
+            [
+                "ae99473e7e934f08"
+            ]
+        ]
+    },
+    {
+        "id": "e216fde94ac02884",
+        "type": "split",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 1210,
+        "y": 520,
+        "wires": [
+            [
+                "c4b5c56dfa9ed72a"
+            ]
+        ]
+    },
+    {
+        "id": "4893e5320b72cf77",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 5",
+        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 680,
+        "wires": [
+            [
+                "593796e545cbd362"
+            ]
+        ]
+    },
+    {
+        "id": "dbc9bf148f5a2703",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 6",
+        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 680,
+        "wires": [
+            [
+                "40fb8ed1e6bfbf86"
+            ]
+        ]
+    },
+    {
+        "id": "5a8e5a1e5a28c41c",
+        "type": "split",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 1210,
+        "y": 680,
+        "wires": [
+            [
+                "dbc9bf148f5a2703"
+            ]
+        ]
+    },
+    {
+        "id": "75452706d234dade",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 7",
+        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 740,
+        "wires": [
+            [
+                "bde80fef40b2b5b3"
+            ]
+        ]
+    },
+    {
+        "id": "99d06f8c01adaa0f",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 8",
+        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1360,
+        "y": 740,
+        "wires": [
+            [
+                "27cbf55bb86ef3ce"
+            ]
+        ]
+    },
+    {
+        "id": "eb1360d17be528fc",
+        "type": "split",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 1210,
+        "y": 740,
+        "wires": [
+            [
+                "99d06f8c01adaa0f"
+            ]
+        ]
+    },
+    {
         "id": "0ee71603d9dc2bbf",
         "type": "influxdb out",
         "z": "7d33f045adfa2ce5",
@@ -318,136 +590,153 @@
         "wires": []
     },
     {
-        "id": "40fb8ed1e6bfbf86",
-        "type": "ui_chart",
+        "id": "cdc061ab3ea10a11",
+        "type": "influxdb in",
         "z": "7d33f045adfa2ce5",
-        "name": "",
-        "group": "161fc0b22611f508",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Dérive",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1510,
-        "y": 680,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "27cbf55bb86ef3ce",
-        "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "group": "161fc0b22611f508",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Somnolence",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1530,
-        "y": 740,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f073d5f310fa046e",
-        "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "group": "2d526cab482570ba",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "BPM",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1510,
+        "influxdb": "0504f462f986c487",
+        "name": "influx_cardiaque",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "myorg",
+        "x": 1040,
         "y": 460,
         "wires": [
-            []
+            [
+                "f7884997eb84cef4"
+            ]
         ]
+    },
+    {
+        "id": "a653bc9186e1adbc",
+        "type": "influxdb in",
+        "z": "7d33f045adfa2ce5",
+        "influxdb": "0504f462f986c487",
+        "name": "influx_cardiaque",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "myorg",
+        "x": 1040,
+        "y": 520,
+        "wires": [
+            [
+                "e216fde94ac02884"
+            ]
+        ]
+    },
+    {
+        "id": "593796e545cbd362",
+        "type": "influxdb in",
+        "z": "7d33f045adfa2ce5",
+        "influxdb": "0504f462f986c487",
+        "name": "influx_cardiaque",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "myorg",
+        "x": 1040,
+        "y": 680,
+        "wires": [
+            [
+                "5a8e5a1e5a28c41c"
+            ]
+        ]
+    },
+    {
+        "id": "bde80fef40b2b5b3",
+        "type": "influxdb in",
+        "z": "7d33f045adfa2ce5",
+        "influxdb": "0504f462f986c487",
+        "name": "influx_cardiaque",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "myorg",
+        "x": 1040,
+        "y": 740,
+        "wires": [
+            [
+                "eb1360d17be528fc"
+            ]
+        ]
+    },
+    {
+        "id": "51aac33fbb6a986d",
+        "type": "http in",
+        "z": "7d33f045adfa2ce5",
+        "name": "http_gps",
+        "url": "/app/gps/:valueLongitude/:valueLatitude/:time",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 480,
+        "y": 1000,
+        "wires": [
+            [
+                "50e83da5c5b90558"
+            ]
+        ]
+    },
+    {
+        "id": "50e83da5c5b90558",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_gps",
+        "func": "let valueLongitude = Number(msg.req.params.valueLongitude);\nlet valueLatitude = Number(msg.req.params.valueLatitude);\nlet time = msg.req.params.time;\n\nmsg.payload = {\n    valueLongitude: valueLongitude,\n    valueLatitude: valueLatitude,\n    time: time\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 1000,
+        "wires": [
+            [
+                "68e686c548d05d76",
+                "8641bcfd349a6b09"
+            ]
+        ]
+    },
+    {
+        "id": "8641bcfd349a6b09",
+        "type": "influxdb out",
+        "z": "7d33f045adfa2ce5",
+        "influxdb": "0504f462f986c487",
+        "name": "influx_gps",
+        "measurement": "gps",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "myorg",
+        "bucket": "mybucket",
+        "x": 1060,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "68e686c548d05d76",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug_gps",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 900,
+        "wires": []
     },
     {
         "id": "f2b60cbeefd2e3d0",
@@ -660,351 +949,135 @@
         "wires": []
     },
     {
-        "id": "c11185ec76fab4e6",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 1",
-        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 860,
-        "y": 460,
-        "wires": [
-            [
-                "cdc061ab3ea10a11"
-            ]
-        ]
-    },
-    {
-        "id": "cdc061ab3ea10a11",
-        "type": "influxdb in",
-        "z": "7d33f045adfa2ce5",
-        "influxdb": "0504f462f986c487",
-        "name": "influx_cardiaque",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "myorg",
-        "x": 1040,
-        "y": 460,
-        "wires": [
-            [
-                "f7884997eb84cef4"
-            ]
-        ]
-    },
-    {
-        "id": "697818e5b772060b",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 2",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1360,
-        "y": 460,
-        "wires": [
-            [
-                "f073d5f310fa046e"
-            ]
-        ]
-    },
-    {
-        "id": "f7884997eb84cef4",
-        "type": "split",
+        "id": "40fb8ed1e6bfbf86",
+        "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1210,
-        "y": 460,
-        "wires": [
-            [
-                "697818e5b772060b"
-            ]
-        ]
-    },
-    {
-        "id": "68a1524d398b4965",
-        "type": "inject",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
+        "group": "161fc0b22611f508",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Dérive",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
         ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 670,
-        "y": 600,
-        "wires": [
-            [
-                "c11185ec76fab4e6",
-                "2a8e1a2a90ea11cc",
-                "4893e5320b72cf77",
-                "75452706d234dade"
-            ]
-        ]
-    },
-    {
-        "id": "2a8e1a2a90ea11cc",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 3",
-        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
         "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 860,
-        "y": 520,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1510,
+        "y": 680,
         "wires": [
-            [
-                "a653bc9186e1adbc"
-            ]
+            []
         ]
     },
     {
-        "id": "a653bc9186e1adbc",
-        "type": "influxdb in",
-        "z": "7d33f045adfa2ce5",
-        "influxdb": "0504f462f986c487",
-        "name": "influx_cardiaque",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "myorg",
-        "x": 1040,
-        "y": 520,
-        "wires": [
-            [
-                "e216fde94ac02884"
-            ]
-        ]
-    },
-    {
-        "id": "c4b5c56dfa9ed72a",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 4",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1360,
-        "y": 520,
-        "wires": [
-            [
-                "ae99473e7e934f08"
-            ]
-        ]
-    },
-    {
-        "id": "e216fde94ac02884",
-        "type": "split",
+        "id": "27cbf55bb86ef3ce",
+        "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1210,
-        "y": 520,
-        "wires": [
-            [
-                "c4b5c56dfa9ed72a"
-            ]
-        ]
-    },
-    {
-        "id": "4893e5320b72cf77",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 5",
-        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
+        "group": "161fc0b22611f508",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Somnolence",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
         "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 860,
-        "y": 680,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1530,
+        "y": 740,
         "wires": [
-            [
-                "593796e545cbd362"
-            ]
+            []
         ]
     },
     {
-        "id": "593796e545cbd362",
-        "type": "influxdb in",
-        "z": "7d33f045adfa2ce5",
-        "influxdb": "0504f462f986c487",
-        "name": "influx_cardiaque",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "myorg",
-        "x": 1040,
-        "y": 680,
-        "wires": [
-            [
-                "5a8e5a1e5a28c41c"
-            ]
-        ]
-    },
-    {
-        "id": "dbc9bf148f5a2703",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 6",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1360,
-        "y": 680,
-        "wires": [
-            [
-                "40fb8ed1e6bfbf86"
-            ]
-        ]
-    },
-    {
-        "id": "5a8e5a1e5a28c41c",
-        "type": "split",
+        "id": "f073d5f310fa046e",
+        "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1210,
-        "y": 680,
-        "wires": [
-            [
-                "dbc9bf148f5a2703"
-            ]
-        ]
-    },
-    {
-        "id": "75452706d234dade",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 7",
-        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
+        "group": "2d526cab482570ba",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "BPM",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
         "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 860,
-        "y": 740,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1510,
+        "y": 460,
         "wires": [
-            [
-                "bde80fef40b2b5b3"
-            ]
-        ]
-    },
-    {
-        "id": "bde80fef40b2b5b3",
-        "type": "influxdb in",
-        "z": "7d33f045adfa2ce5",
-        "influxdb": "0504f462f986c487",
-        "name": "influx_cardiaque",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "myorg",
-        "x": 1040,
-        "y": 740,
-        "wires": [
-            [
-                "eb1360d17be528fc"
-            ]
-        ]
-    },
-    {
-        "id": "99d06f8c01adaa0f",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 8",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1360,
-        "y": 740,
-        "wires": [
-            [
-                "27cbf55bb86ef3ce"
-            ]
-        ]
-    },
-    {
-        "id": "eb1360d17be528fc",
-        "type": "split",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1210,
-        "y": 740,
-        "wires": [
-            [
-                "99d06f8c01adaa0f"
-            ]
+            []
         ]
     },
     {
