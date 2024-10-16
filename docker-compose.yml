@@ -21,6 +21,7 @@ services:
       - DOCKER_INFLUXDB_INIT_PASSWORD=driver_password
       - DOCKER_INFLUXDB_INIT_ORG=myorg
       - DOCKER_INFLUXDB_INIT_BUCKET=mybucket
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=myadmintoken
     depends_on:
       - node-red
     volumes:
