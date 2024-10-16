@@ -161,17 +161,6 @@
         "className": ""
     },
     {
-        "id": "fc2cf8f37a7b4f9f",
-        "type": "ui_group",
-        "name": "Dérive",
-        "tab": "26b1797a2f299d3c",
-        "order": 4,
-        "disp": true,
-        "width": "12",
-        "collapse": false,
-        "className": ""
-    },
-    {
         "id": "3932fb80003a0cc6",
         "type": "http in",
         "z": "7d33f045adfa2ce5",
@@ -355,7 +344,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1510,
+        "x": 1790,
         "y": 680,
         "wires": [
             []
@@ -399,7 +388,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1530,
+        "x": 1810,
         "y": 740,
         "wires": [
             []
@@ -443,7 +432,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1510,
+        "x": 1790,
         "y": 460,
         "wires": [
             []
@@ -660,85 +649,6 @@
         "wires": []
     },
     {
-        "id": "c11185ec76fab4e6",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 1",
-        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 860,
-        "y": 460,
-        "wires": [
-            [
-                "cdc061ab3ea10a11"
-            ]
-        ]
-    },
-    {
-        "id": "cdc061ab3ea10a11",
-        "type": "influxdb in",
-        "z": "7d33f045adfa2ce5",
-        "influxdb": "0504f462f986c487",
-        "name": "influx_cardiaque",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "myorg",
-        "x": 1040,
-        "y": 460,
-        "wires": [
-            [
-                "f7884997eb84cef4"
-            ]
-        ]
-    },
-    {
-        "id": "697818e5b772060b",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 2",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1360,
-        "y": 460,
-        "wires": [
-            [
-                "f073d5f310fa046e"
-            ]
-        ]
-    },
-    {
-        "id": "f7884997eb84cef4",
-        "type": "split",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1210,
-        "y": 460,
-        "wires": [
-            [
-                "697818e5b772060b"
-            ]
-        ]
-    },
-    {
         "id": "68a1524d398b4965",
         "type": "inject",
         "z": "7d33f045adfa2ce5",
@@ -760,13 +670,10 @@
         "payload": "",
         "payloadType": "date",
         "x": 670,
-        "y": 600,
+        "y": 580,
         "wires": [
             [
-                "c11185ec76fab4e6",
-                "2a8e1a2a90ea11cc",
-                "4893e5320b72cf77",
-                "75452706d234dade"
+                "2a8e1a2a90ea11cc"
             ]
         ]
     },
@@ -774,7 +681,7 @@
         "id": "2a8e1a2a90ea11cc",
         "type": "function",
         "z": "7d33f045adfa2ce5",
-        "name": "function 3",
+        "name": "function_query_cardiaque",
         "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -782,87 +689,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
-        "y": 520,
-        "wires": [
-            [
-                "a653bc9186e1adbc"
-            ]
-        ]
-    },
-    {
-        "id": "a653bc9186e1adbc",
-        "type": "influxdb in",
-        "z": "7d33f045adfa2ce5",
-        "influxdb": "0504f462f986c487",
-        "name": "influx_cardiaque",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "myorg",
-        "x": 1040,
-        "y": 520,
-        "wires": [
-            [
-                "e216fde94ac02884"
-            ]
-        ]
-    },
-    {
-        "id": "c4b5c56dfa9ed72a",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 4",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1360,
-        "y": 520,
-        "wires": [
-            [
-                "ae99473e7e934f08"
-            ]
-        ]
-    },
-    {
-        "id": "e216fde94ac02884",
-        "type": "split",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1210,
-        "y": 520,
-        "wires": [
-            [
-                "c4b5c56dfa9ed72a"
-            ]
-        ]
-    },
-    {
-        "id": "4893e5320b72cf77",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 5",
-        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 860,
-        "y": 680,
+        "x": 910,
+        "y": 580,
         "wires": [
             [
                 "593796e545cbd362"
@@ -880,8 +708,8 @@
         "precision": "",
         "retentionPolicy": "",
         "org": "myorg",
-        "x": 1040,
-        "y": 680,
+        "x": 1180,
+        "y": 580,
         "wires": [
             [
                 "5a8e5a1e5a28c41c"
@@ -892,7 +720,7 @@
         "id": "dbc9bf148f5a2703",
         "type": "function",
         "z": "7d33f045adfa2ce5",
-        "name": "function 6",
+        "name": "function_split_cardiaque",
         "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -900,11 +728,14 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1360,
-        "y": 680,
+        "x": 1550,
+        "y": 580,
         "wires": [
             [
-                "40fb8ed1e6bfbf86"
+                "40fb8ed1e6bfbf86",
+                "27cbf55bb86ef3ce",
+                "ae99473e7e934f08",
+                "f073d5f310fa046e"
             ]
         ]
     },
@@ -920,90 +751,11 @@
         "stream": false,
         "addname": "",
         "property": "payload",
-        "x": 1210,
-        "y": 680,
+        "x": 1350,
+        "y": 580,
         "wires": [
             [
                 "dbc9bf148f5a2703"
-            ]
-        ]
-    },
-    {
-        "id": "75452706d234dade",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 7",
-        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 860,
-        "y": 740,
-        "wires": [
-            [
-                "bde80fef40b2b5b3"
-            ]
-        ]
-    },
-    {
-        "id": "bde80fef40b2b5b3",
-        "type": "influxdb in",
-        "z": "7d33f045adfa2ce5",
-        "influxdb": "0504f462f986c487",
-        "name": "influx_cardiaque",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "myorg",
-        "x": 1040,
-        "y": 740,
-        "wires": [
-            [
-                "eb1360d17be528fc"
-            ]
-        ]
-    },
-    {
-        "id": "99d06f8c01adaa0f",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 8",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1360,
-        "y": 740,
-        "wires": [
-            [
-                "27cbf55bb86ef3ce"
-            ]
-        ]
-    },
-    {
-        "id": "eb1360d17be528fc",
-        "type": "split",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1210,
-        "y": 740,
-        "wires": [
-            [
-                "99d06f8c01adaa0f"
             ]
         ]
     },
@@ -1045,7 +797,7 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 1540,
+        "x": 1820,
         "y": 520,
         "wires": [
             []
