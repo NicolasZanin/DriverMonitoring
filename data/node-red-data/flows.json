@@ -691,7 +691,7 @@
         "wires": [
             [
                 "167cc28af79b6966",
-                "4250dff36c2ef62f"
+                "b677f48bb7201e67"
             ]
         ]
     },
@@ -855,7 +855,7 @@
         "wires": [
             [
                 "5d7034aba53dc3d3",
-                "fd479554301cb444"
+                "87cf0b21796d4469"
             ]
         ]
     },
@@ -876,52 +876,8 @@
         "wires": [
             [
                 "42c2ba6284cc1bc8",
-                "b82e8c8612c91eae"
+                "7a3aa19184be0ed7"
             ]
-        ]
-    },
-    {
-        "id": "4250dff36c2ef62f",
-        "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "group": "161fc0b22611f508",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Somnolence",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 2530,
-        "y": 420,
-        "wires": [
-            []
         ]
     },
     {
@@ -969,51 +925,44 @@
         ]
     },
     {
-        "id": "b82e8c8612c91eae",
-        "type": "ui_chart",
+        "id": "f85774fbba8788da",
+        "type": "function",
         "z": "7d33f045adfa2ce5",
-        "name": "",
-        "group": "2d526cab482570ba",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Variance",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": true,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
+        "name": "temps de conduite",
+        "func": "let data = msg.payload;\n\n// Trouver le timestamp le plus ancien et le plus récent dans l'ensemble du tableau\nlet oldestTimestamp = new Date(data[0]._time).getTime() / 1000;  // Conversion en secondes\nlet newestTimestamp = new Date(data[0]._time).getTime() / 1000;  // Conversion en secondes\n\ndata.forEach(item => {\n    let currentTimestamp = new Date(item._time).getTime() / 1000;  // Conversion en secondes\n    if (currentTimestamp < oldestTimestamp) {\n        oldestTimestamp = currentTimestamp;\n    }\n    if (currentTimestamp > newestTimestamp) {\n        newestTimestamp = currentTimestamp;\n    }\n});\n\n// Calculer la différence de temps en secondes directement\nlet timeDifferenceSec = newestTimestamp - oldestTimestamp;\n\n// Convertir la différence en heures et minutes\nlet hours = Math.floor(timeDifferenceSec / 3600);  // Obtenir le nombre d'heures\nlet minutes = Math.floor((timeDifferenceSec % 3600) / 60);  // Obtenir le reste en minutes\n\n// Formater en HH:MM\nlet formattedTimeDifference = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;\n\n// Retourner le message formaté\nmsg.payload = formattedTimeDifference;\n\nreturn msg;",
         "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 2520,
-        "y": 500,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1390,
+        "y": 820,
         "wires": [
-            []
+            [
+                "f2b60cbeefd2e3d0",
+                "b394fde3a14e899d"
+            ]
         ]
     },
     {
-        "id": "c794e4e021a34ecd",
+        "id": "b394fde3a14e899d",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 10",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "b677f48bb7201e67",
         "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
@@ -1051,13 +1000,13 @@
         "useDifferentColor": false,
         "className": "",
         "x": 2510,
-        "y": 160,
+        "y": 420,
         "wires": [
             []
         ]
     },
     {
-        "id": "4159b9334deb6e20",
+        "id": "87cf0b21796d4469",
         "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
@@ -1094,14 +1043,14 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 2510,
-        "y": 200,
+        "x": 2490,
+        "y": 580,
         "wires": [
             []
         ]
     },
     {
-        "id": "011b4ab7743320e5",
+        "id": "7a3aa19184be0ed7",
         "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
@@ -1139,50 +1088,57 @@
         "useDifferentColor": false,
         "className": "",
         "x": 2500,
-        "y": 240,
+        "y": 720,
         "wires": [
             []
         ]
     },
     {
-        "id": "f85774fbba8788da",
-        "type": "function",
+        "id": "2b518cc1fb165603",
+        "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
-        "name": "temps de conduite",
-        "func": "let data = msg.payload;\n\n// Trouver le timestamp le plus ancien et le plus récent dans l'ensemble du tableau\nlet oldestTimestamp = new Date(data[0]._time).getTime() / 1000;  // Conversion en secondes\nlet newestTimestamp = new Date(data[0]._time).getTime() / 1000;  // Conversion en secondes\n\ndata.forEach(item => {\n    let currentTimestamp = new Date(item._time).getTime() / 1000;  // Conversion en secondes\n    if (currentTimestamp < oldestTimestamp) {\n        oldestTimestamp = currentTimestamp;\n    }\n    if (currentTimestamp > newestTimestamp) {\n        newestTimestamp = currentTimestamp;\n    }\n});\n\n// Calculer la différence de temps en secondes directement\nlet timeDifferenceSec = newestTimestamp - oldestTimestamp;\n\n// Convertir la différence en heures et minutes\nlet hours = Math.floor(timeDifferenceSec / 3600);  // Obtenir le nombre d'heures\nlet minutes = Math.floor((timeDifferenceSec % 3600) / 60);  // Obtenir le reste en minutes\n\n// Formater en HH:MM\nlet formattedTimeDifference = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;\n\n// Retourner le message formaté\nmsg.payload = formattedTimeDifference;\n\nreturn msg;",
+        "name": "",
+        "group": "161fc0b22611f508",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Somnolence",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
         "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1390,
-        "y": 820,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 2710,
+        "y": 280,
         "wires": [
-            [
-                "f2b60cbeefd2e3d0",
-                "b394fde3a14e899d"
-            ]
+            []
         ]
     },
     {
-        "id": "b394fde3a14e899d",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 10",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1540,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "fd479554301cb444",
+        "id": "e73c774cdec9c915",
         "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
@@ -1219,8 +1175,52 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 2510,
-        "y": 460,
+        "x": 2690,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "df4d80e38587d17e",
+        "type": "ui_chart",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "group": "2d526cab482570ba",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Variance",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": true,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 2700,
+        "y": 580,
         "wires": [
             []
         ]
