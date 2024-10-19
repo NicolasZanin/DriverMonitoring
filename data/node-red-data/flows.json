@@ -323,8 +323,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 180,
-        "y": 460,
+        "x": 1700,
+        "y": 820,
         "wires": []
     },
     {
@@ -583,7 +583,8 @@
             [
                 "5a8e5a1e5a28c41c",
                 "5c0ac215e40b4eec",
-                "9d0f61d8f6a85327"
+                "9d0f61d8f6a85327",
+                "f85774fbba8788da"
             ]
         ]
     },
@@ -646,7 +647,7 @@
         "type": "debug",
         "z": "7d33f045adfa2ce5",
         "name": "debug 3",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -826,7 +827,7 @@
         "type": "debug",
         "z": "7d33f045adfa2ce5",
         "name": "debug 9",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -854,7 +855,7 @@
         "wires": [
             [
                 "5d7034aba53dc3d3",
-                "e0302deb372d7a5e"
+                "fd479554301cb444"
             ]
         ]
     },
@@ -862,7 +863,7 @@
         "id": "9e359937f02c3dea",
         "type": "function",
         "z": "7d33f045adfa2ce5",
-        "name": "function_split_cardiaque",
+        "name": "function_split_variance",
         "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -870,7 +871,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2170,
+        "x": 2160,
         "y": 720,
         "wires": [
             [
@@ -919,50 +920,6 @@
         "className": "",
         "x": 2530,
         "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e0302deb372d7a5e",
-        "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "group": "2d526cab482570ba",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "BPM",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 2530,
-        "y": 460,
         "wires": [
             []
         ]
@@ -1183,6 +1140,87 @@
         "className": "",
         "x": 2500,
         "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f85774fbba8788da",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "temps de conduite",
+        "func": "let data = msg.payload;\n\n// Trouver le timestamp le plus ancien et le plus récent dans l'ensemble du tableau\nlet oldestTimestamp = new Date(data[0]._time).getTime() / 1000;  // Conversion en secondes\nlet newestTimestamp = new Date(data[0]._time).getTime() / 1000;  // Conversion en secondes\n\ndata.forEach(item => {\n    let currentTimestamp = new Date(item._time).getTime() / 1000;  // Conversion en secondes\n    if (currentTimestamp < oldestTimestamp) {\n        oldestTimestamp = currentTimestamp;\n    }\n    if (currentTimestamp > newestTimestamp) {\n        newestTimestamp = currentTimestamp;\n    }\n});\n\n// Calculer la différence de temps en secondes directement\nlet timeDifferenceSec = newestTimestamp - oldestTimestamp;\n\n// Convertir la différence en heures et minutes\nlet hours = Math.floor(timeDifferenceSec / 3600);  // Obtenir le nombre d'heures\nlet minutes = Math.floor((timeDifferenceSec % 3600) / 60);  // Obtenir le reste en minutes\n\n// Formater en HH:MM\nlet formattedTimeDifference = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;\n\n// Retourner le message formaté\nmsg.payload = formattedTimeDifference;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1390,
+        "y": 820,
+        "wires": [
+            [
+                "f2b60cbeefd2e3d0",
+                "b394fde3a14e899d"
+            ]
+        ]
+    },
+    {
+        "id": "b394fde3a14e899d",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1540,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "fd479554301cb444",
+        "type": "ui_chart",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "group": "2d526cab482570ba",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "BPM",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 2510,
+        "y": 460,
         "wires": [
             []
         ]
