@@ -139,7 +139,7 @@ def handlerSwitchOptionFile(line: str) -> None:
     elif argsLine[0].startswith('a'):
         if lenLine < MINIMUM_NUMBER_ACCELEROMETER:
             raise TypeError("Accelerometer need three argument")
-        handler_cardiaque(argsLine[1], argsLine[2], argsLine[3], argsLine[4] if lenLine > MAXIMUM_NUMBER_ACCELEROMETER else ConvertDate.strNow())
+        handler_accelerometer(argsLine[1], argsLine[2], argsLine[3], argsLine[4] if lenLine > MAXIMUM_NUMBER_ACCELEROMETER else ConvertDate.strNow())
     else:
         raise TypeError("Method Not Exist")
     
