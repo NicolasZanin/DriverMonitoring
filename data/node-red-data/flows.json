@@ -334,7 +334,7 @@
         "group": "bc962b1e502fdd92",
         "order": 4,
         "width": "6",
-        "height": "3",
+        "height": "5",
         "name": "",
         "label": "Temps de somnolence total :",
         "format": "{{msg.payload}}",
@@ -344,29 +344,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 200,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "a1dd420e8d3ab6db",
-        "type": "ui_text",
-        "z": "7d33f045adfa2ce5",
-        "group": "bc962b1e502fdd92",
-        "order": 4,
-        "width": "6",
-        "height": "2",
-        "name": "",
-        "label": "Pourcentage du trajet en somnolence :",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 230,
-        "y": 580,
+        "x": 2560,
+        "y": 200,
         "wires": []
     },
     {
@@ -376,7 +355,7 @@
         "group": "bc962b1e502fdd92",
         "order": 4,
         "width": "6",
-        "height": "2",
+        "height": "4",
         "name": "",
         "label": "Temps de somnolance la plus longue :",
         "format": "{{msg.payload}}",
@@ -386,29 +365,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 230,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "5b8db29d67362fe0",
-        "type": "ui_text",
-        "z": "7d33f045adfa2ce5",
-        "group": "bc962b1e502fdd92",
-        "order": 4,
-        "width": "6",
-        "height": "2",
-        "name": "",
-        "label": "Distance parcourue en somnolant :",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 220,
-        "y": 760,
+        "x": 2590,
+        "y": 260,
         "wires": []
     },
     {
@@ -418,7 +376,7 @@
         "group": "bc962b1e502fdd92",
         "order": 4,
         "width": "6",
-        "height": "2",
+        "height": "4",
         "name": "",
         "label": "Nombre de dérives :",
         "format": "{{msg.payload}}",
@@ -428,50 +386,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 180,
-        "y": 880,
-        "wires": []
-    },
-    {
-        "id": "8c6f8898105bb795",
-        "type": "ui_text",
-        "z": "7d33f045adfa2ce5",
-        "group": "bc962b1e502fdd92",
-        "order": 4,
-        "width": "6",
-        "height": "2",
-        "name": "",
-        "label": "Nombre de dérives par heure:",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 210,
-        "y": 940,
-        "wires": []
-    },
-    {
-        "id": "8b7189480af46fec",
-        "type": "ui_text",
-        "z": "7d33f045adfa2ce5",
-        "group": "bc962b1e502fdd92",
-        "order": 4,
-        "width": "6",
-        "height": "2",
-        "name": "",
-        "label": "Dérives à plus de 80 km/h :",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 200,
-        "y": 1000,
+        "x": 2540,
+        "y": 1280,
         "wires": []
     },
     {
@@ -481,7 +397,7 @@
         "group": "bc962b1e502fdd92",
         "order": 4,
         "width": "6",
-        "height": "2",
+        "height": "5",
         "name": "",
         "label": "Horaires où les somnolence ont été les plus courantes :",
         "format": "{{msg.payload}}",
@@ -491,29 +407,8 @@
         "font": "",
         "fontSize": 16,
         "color": "#000000",
-        "x": 290,
-        "y": 700,
-        "wires": []
-    },
-    {
-        "id": "7fefe67424f81a80",
-        "type": "ui_text",
-        "z": "7d33f045adfa2ce5",
-        "group": "bc962b1e502fdd92",
-        "order": 4,
-        "width": "6",
-        "height": "2",
-        "name": "",
-        "label": "Distance la plus longue en somnolant :",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 230,
-        "y": 820,
+        "x": 2650,
+        "y": 80,
         "wires": []
     },
     {
@@ -537,11 +432,13 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 670,
-        "y": 580,
+        "x": 570,
+        "y": 880,
         "wires": [
             [
-                "2a8e1a2a90ea11cc"
+                "2a8e1a2a90ea11cc",
+                "89baaa95811c5bc7",
+                "b8b9406a088c8b2a"
             ]
         ]
     },
@@ -550,7 +447,7 @@
         "type": "function",
         "z": "7d33f045adfa2ce5",
         "name": "function_query_cardiaque",
-        "func": "msg = {\n    payload: 'from(bucket: \"mybucket\")\\n' +\n             '|> range(start: 2024-10-15T14:40:00Z, stop: 2024-10-15T15:45:00Z)\\n' +\n             '|> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;\n",
+        "func": "msg = {\n    payload: 'from(bucket: \"mybucket\")\\n' +\n             '|> range(start: 2024-10-09)\\n' +\n             '|> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -584,7 +481,10 @@
                 "5a8e5a1e5a28c41c",
                 "5c0ac215e40b4eec",
                 "9d0f61d8f6a85327",
-                "f85774fbba8788da"
+                "f85774fbba8788da",
+                "2dbaebf82dc29bee",
+                "a78639d45405f064",
+                "2e51593d716bd2c7"
             ]
         ]
     },
@@ -605,8 +505,8 @@
         "wires": [
             [
                 "919c3db1f4c4c911",
-                "9416f0b4712c7319",
-                "dbc9bf148f5a2703"
+                "dbc9bf148f5a2703",
+                "302053971152580d"
             ]
         ]
     },
@@ -672,43 +572,6 @@
         "statusType": "auto",
         "x": 1760,
         "y": 540,
-        "wires": []
-    },
-    {
-        "id": "9416f0b4712c7319",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_somnolence",
-        "func": "// Récupérer les valeurs du message\nmsg.timestamp = msg.payload._time;  // Le timestamp du message\nmsg.payload = (Number(msg.payload._value) < 60) ? 1 : 0;  // Si _value < 60, on met 1 (somnolent), sinon 0\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1720,
-        "y": 420,
-        "wires": [
-            [
-                "167cc28af79b6966",
-                "b677f48bb7201e67"
-            ]
-        ]
-    },
-    {
-        "id": "167cc28af79b6966",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 5",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1760,
-        "y": 380,
         "wires": []
     },
     {
@@ -855,7 +718,7 @@
         "wires": [
             [
                 "5d7034aba53dc3d3",
-                "87cf0b21796d4469"
+                "34c2c5dafbe8124d"
             ]
         ]
     },
@@ -876,52 +739,8 @@
         "wires": [
             [
                 "42c2ba6284cc1bc8",
-                "7a3aa19184be0ed7"
+                "de0e279e9e71f451"
             ]
-        ]
-    },
-    {
-        "id": "925f675406cc9546",
-        "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "group": "161fc0b22611f508",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Dérive",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 2530,
-        "y": 1040,
-        "wires": [
-            []
         ]
     },
     {
@@ -962,7 +781,155 @@
         "wires": []
     },
     {
-        "id": "b677f48bb7201e67",
+        "id": "89baaa95811c5bc7",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_query_accelerometer",
+        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"accelerometer\")\\n|> sort(columns: [\"_time\"], desc: false)'\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 1160,
+        "wires": [
+            [
+                "d916bf4a62e4e574",
+                "e1d4da5abe68bf54"
+            ]
+        ]
+    },
+    {
+        "id": "d916bf4a62e4e574",
+        "type": "influxdb in",
+        "z": "7d33f045adfa2ce5",
+        "influxdb": "0504f462f986c487",
+        "name": "influx_cardiaque",
+        "query": "from(bucket: \"mybucket\")\n  |> range(start: 2024-10-15T00:00:00Z, stop: 2024-10-15T23:59:59Z)  // Toute la journée du 15 octobre 2024\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "myorg",
+        "x": 1160,
+        "y": 1160,
+        "wires": [
+            [
+                "7accdab9d962461f",
+                "a3f2f07c625c1134",
+                "8df5b2132fa51dfd"
+            ]
+        ]
+    },
+    {
+        "id": "7accdab9d962461f",
+        "type": "split",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 1350,
+        "y": 1160,
+        "wires": [
+            [
+                "9c605e5daf164e82",
+                "055ffe4164bc791c"
+            ]
+        ]
+    },
+    {
+        "id": "e1d4da5abe68bf54",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 11",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "a3f2f07c625c1134",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 12",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1180,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "9c605e5daf164e82",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 13",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1360,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "055ffe4164bc791c",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_split_cardiaque",
+        "func": "msg.timestamp = msg.payload._time;\n\nif (msg.payload._field === \"value_x\" && (msg.payload._value > 0.2 || msg.payload._value < -0.2)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}\n\nif (msg.payload._field === \"value_y\" && (msg.payload._value > 0.3 || msg.payload._value < -0.3)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1710,
+        "y": 1160,
+        "wires": [
+            [
+                "e8299785320bcce1",
+                "fc74ff989d44c4bb"
+            ]
+        ]
+    },
+    {
+        "id": "e8299785320bcce1",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 14",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1760,
+        "y": 1120,
+        "wires": []
+    },
+    {
+        "id": "6921020d3da18dcc",
         "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
@@ -975,7 +942,7 @@
         "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
-        "nodata": "",
+        "nodata": "Somnolence",
         "dot": false,
         "ymin": "",
         "ymax": "",
@@ -986,7 +953,7 @@
         "useOneColor": false,
         "useUTC": false,
         "colors": [
-            "#1f77b4",
+            "#7300ff",
             "#aec7e8",
             "#ff7f0e",
             "#2ca02c",
@@ -1006,7 +973,7 @@
         ]
     },
     {
-        "id": "87cf0b21796d4469",
+        "id": "34c2c5dafbe8124d",
         "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
@@ -1019,7 +986,7 @@
         "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
-        "nodata": "",
+        "nodata": "BPM",
         "dot": false,
         "ymin": "",
         "ymax": "",
@@ -1030,7 +997,7 @@
         "useOneColor": false,
         "useUTC": false,
         "colors": [
-            "#1f77b4",
+            "#ff0000",
             "#aec7e8",
             "#ff7f0e",
             "#2ca02c",
@@ -1050,7 +1017,7 @@
         ]
     },
     {
-        "id": "7a3aa19184be0ed7",
+        "id": "de0e279e9e71f451",
         "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
@@ -1063,7 +1030,7 @@
         "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
-        "nodata": "",
+        "nodata": "Variance",
         "dot": true,
         "ymin": "",
         "ymax": "",
@@ -1074,7 +1041,7 @@
         "useOneColor": false,
         "useUTC": false,
         "colors": [
-            "#1f77b4",
+            "#ff00f7",
             "#aec7e8",
             "#ff7f0e",
             "#2ca02c",
@@ -1094,7 +1061,7 @@
         ]
     },
     {
-        "id": "2b518cc1fb165603",
+        "id": "fc74ff989d44c4bb",
         "type": "ui_chart",
         "z": "7d33f045adfa2ce5",
         "name": "",
@@ -1102,100 +1069,12 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "label": "Somnolence",
+        "label": "Dérive",
         "chartType": "line",
         "legend": "false",
         "xformat": "HH:mm:ss",
         "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 2710,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e73c774cdec9c915",
-        "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "group": "2d526cab482570ba",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "BPM",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 2690,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "df4d80e38587d17e",
-        "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "group": "2d526cab482570ba",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "label": "Variance",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
+        "nodata": "Dérive",
         "dot": true,
         "ymin": "",
         "ymax": "",
@@ -1206,7 +1085,7 @@
         "useOneColor": false,
         "useUTC": false,
         "colors": [
-            "#1f77b4",
+            "#004cff",
             "#aec7e8",
             "#ff7f0e",
             "#2ca02c",
@@ -1219,10 +1098,209 @@
         "outputs": 1,
         "useDifferentColor": false,
         "className": "",
-        "x": 2700,
-        "y": 580,
+        "x": 2490,
+        "y": 1160,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "b8b9406a088c8b2a",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_reset",
+        "func": "msg.payload = [];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 860,
+        "wires": [
+            [
+                "6921020d3da18dcc",
+                "34c2c5dafbe8124d",
+                "de0e279e9e71f451",
+                "fc74ff989d44c4bb",
+                "2ecc9dd35be6eb7d",
+                "2fcd9a7b2b30e030",
+                "3aaa1015cc4d6a85",
+                "98d6736019d2b1b1"
+            ]
+        ]
+    },
+    {
+        "id": "302053971152580d",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_somnolence",
+        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = (Number(msg.payload._value) < 60) ? 1 : 0;  // 1 si en somnolence, sinon 0\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1720,
+        "y": 400,
+        "wires": [
+            [
+                "b91e4aa7d0dcdaac",
+                "6921020d3da18dcc"
+            ]
+        ]
+    },
+    {
+        "id": "b91e4aa7d0dcdaac",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 15",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1760,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "2dbaebf82dc29bee",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_somnolence_max",
+        "func": "// Assumed that msg.payload is the array of data\nlet somnolenceData = msg.payload;\n\nlet somnolencePeriods = []; // No type annotations in JavaScript\nlet currentStartTime = null;\n\nfor (let i = 0; i < somnolenceData.length; i++) {\n    let dataPoint = somnolenceData[i];\n\n    if (dataPoint._value < 60) {\n        // If we are in a sleep period, start or continue it\n        if (currentStartTime === null) {\n            currentStartTime = new Date(dataPoint._time); // Starting the somnolence period\n        }\n    } else {\n        // If somnolence ends, record the period\n        if (currentStartTime !== null) {\n            let endTime = new Date(dataPoint._time);\n            let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000; // Duration in seconds\n            somnolencePeriods.push({\n                startTime: currentStartTime,\n                endTime: endTime,\n                duration: durationInSeconds\n            });\n            currentStartTime = null;\n        }\n    }\n}\n\n// Handle the case where the somnolence period ends at the last data point\nif (currentStartTime !== null) {\n    let endTime = new Date(somnolenceData[somnolenceData.length - 1]._time);\n    let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000;\n    somnolencePeriods.push({\n        startTime: currentStartTime,\n        endTime: endTime,\n        duration: durationInSeconds\n    });\n}\n\n// Find the longest somnolence period\nlet longestSleepPeriod = somnolencePeriods.reduce((max, current) => {\n    return current.duration > max.duration ? current : max;\n}, { duration: 0 });\n\n// Assuming longestSleepPeriod.duration is in seconds\nlet durationInSeconds = longestSleepPeriod.duration;\n\n// Calculate hours and minutes\nlet hours = Math.floor(durationInSeconds / 3600); // 1 hour = 3600 seconds\nlet minutes = Math.floor((durationInSeconds % 3600) / 60); // 1 minute = 60 seconds\n\n// Format as HH:MM\nlet formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;\n\nreturn {\n    payload: formattedDuration\n};\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1440,
+        "y": 300,
+        "wires": [
+            [
+                "2ecc9dd35be6eb7d",
+                "92e3e748c7d8d963"
+            ]
+        ]
+    },
+    {
+        "id": "92e3e748c7d8d963",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 16",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "a78639d45405f064",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_somnolence_total",
+        "func": "// Assumed that msg.payload is the array of data\nlet somnolenceData = msg.payload;\n\nlet totalSomnolenceDuration = 0; // Initialize total somnolence time in seconds\nlet currentStartTime = null;\n\nfor (let i = 0; i < somnolenceData.length; i++) {\n    let dataPoint = somnolenceData[i];\n\n    if (dataPoint._value < 60) {\n        // If we are in a sleep period, start or continue it\n        if (currentStartTime === null) {\n            currentStartTime = new Date(dataPoint._time); // Starting the somnolence period\n        }\n    } else {\n        // If somnolence ends, record the period\n        if (currentStartTime !== null) {\n            let endTime = new Date(dataPoint._time);\n            let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000; // Duration in seconds\n            totalSomnolenceDuration += durationInSeconds; // Add duration to the total\n            currentStartTime = null;\n        }\n    }\n}\n\n// Handle the case where the somnolence period ends at the last data point\nif (currentStartTime !== null) {\n    let endTime = new Date(somnolenceData[somnolenceData.length - 1]._time);\n    let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000;\n    totalSomnolenceDuration += durationInSeconds; // Add duration to the total\n}\n\n// Calculate hours and minutes for the total somnolence time\nlet hours = Math.floor(totalSomnolenceDuration / 3600); // 1 hour = 3600 seconds\nlet minutes = Math.floor((totalSomnolenceDuration % 3600) / 60); // 1 minute = 60 seconds\n\n// Format as HH:MM\nlet formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;\n\nreturn {\n    payload: formattedDuration\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1440,
+        "y": 180,
+        "wires": [
+            [
+                "2fcd9a7b2b30e030",
+                "292f433b8b209006"
+            ]
+        ]
+    },
+    {
+        "id": "2e51593d716bd2c7",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_somnolence_frequent",
+        "func": "// Assumed that msg.payload is the array of data\nlet somnolenceData = msg.payload;\n\n// Initialize a map to store somnolence counts for each hour (0 to 23)\nlet somnolenceByHour = Array(24).fill(0);\n\nfor (let i = 0; i < somnolenceData.length; i++) {\n    let dataPoint = somnolenceData[i];\n\n    if (dataPoint._value < 60) {\n        // If somnolence is detected, get the hour from the timestamp\n        let timestamp = new Date(dataPoint._time);\n        let hour = timestamp.getHours(); // Extract the hour from the timestamp\n        somnolenceByHour[hour] += 1; // Increment the count for this hour\n    }\n}\n\n// Find the hour with the most frequent somnolence\nlet mostCommonHour = somnolenceByHour.reduce((max, count, index) => {\n    return count > max.count ? { hour: index, count: count } : max;\n}, { hour: -1, count: 0 });\n\n// Format the hour into HH:00 (e.g., \"08:00\" for 8 AM)\nlet formattedHour = `${mostCommonHour.hour.toString().padStart(2, '0')}:00`;\n\nreturn {\n    payload: formattedHour\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1450,
+        "y": 80,
+        "wires": [
+            [
+                "bf3c3c66b9f2f8c7",
+                "3aaa1015cc4d6a85"
+            ]
+        ]
+    },
+    {
+        "id": "292f433b8b209006",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 17",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "bf3c3c66b9f2f8c7",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 18",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "8df5b2132fa51dfd",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_count_dérive",
+        "func": "// Initialize a variable to count the number of derivatives\nlet derivativeCount = 0;\n\n// Iterate through each item in the payload\nfor (let i = 0; i < msg.payload.length; i++) {\n    let dataPoint = msg.payload[i];  // Get the current data point\n\n    // Check for \"value_x\" field and the specified condition\n    if (dataPoint._field === \"value_x\" && (dataPoint._value > 0.2 || dataPoint._value < -0.2)) {\n        derivativeCount += 1;  // Increment the derivative count for \"value_x\"\n    }\n\n    // Check for \"value_y\" field and the specified condition\n    if (dataPoint._field === \"value_y\" && (dataPoint._value > 0.3 || dataPoint._value < -0.3)) {\n        derivativeCount += 1;  // Increment the derivative count for \"value_y\"\n    }\n}\n\n// Return the count of derivatives\nreturn {\n    payload: derivativeCount\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1400,
+        "y": 1280,
+        "wires": [
+            [
+                "98d6736019d2b1b1"
+            ]
         ]
     }
 ]
