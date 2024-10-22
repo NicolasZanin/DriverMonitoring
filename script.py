@@ -93,6 +93,8 @@ def deleteMeasurementRequest(measurementName: str) -> None:
 
     conn : cl.HTTPConnection = cl.HTTPConnection(HOST, 8086)
     conn.request("POST", URL_INFLUX, body=json.dumps(data), headers=HEADER_INFLUX)
+    response = conn.getresponse()
+    print(response.status)
     conn.close()
 
 def handler_cardiaque(frequency: int, date : str) -> None :
@@ -131,7 +133,7 @@ def handlerSwitchOptionFile(line: str) -> None:
 
     argsLine: list[str] = line.split(' ')
     lenLine: int = len(argsLine)
-
+    print(argsLine[0].startswith('c')== True)
     if argsLine[0].startswith('c'):
         if lenLine < MINIMUM_NUMBER_CARDIAQUE:
             raise TypeError("Cardiaque need one argument")
@@ -139,7 +141,7 @@ def handlerSwitchOptionFile(line: str) -> None:
     elif argsLine[0].startswith('a'):
         if lenLine < MINIMUM_NUMBER_ACCELEROMETER:
             raise TypeError("Accelerometer need three argument")
-        handler_cardiaque(argsLine[1], argsLine[2], argsLine[3], argsLine[4] if lenLine > MAXIMUM_NUMBER_ACCELEROMETER else ConvertDate.strNow())
+        handler_accelerometer(argsLine[1], argsLine[2], argsLine[3], argsLine[4] if lenLine > MAXIMUM_NUMBER_ACCELEROMETER else ConvertDate.strNow())
     else:
         raise TypeError("Method Not Exist")
     
