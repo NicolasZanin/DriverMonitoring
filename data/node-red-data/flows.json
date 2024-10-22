@@ -222,8 +222,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
-        "y": 80,
+        "x": 770,
+        "y": 120,
         "wires": []
     },
     {
@@ -235,8 +235,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 170,
-        "y": 360,
+        "x": 190,
+        "y": 440,
         "wires": [
             [
                 "2a3b84b9e454c694"
@@ -255,12 +255,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
-        "y": 360,
+        "x": 1170,
+        "y": 440,
         "wires": [
             [
                 "8987dda3253a708a",
-                "b836ff4cbe949f16"
+                "b836ff4cbe949f16",
+                "9f8fb2ff54ca0948"
             ]
         ]
     },
@@ -277,68 +278,641 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 760,
-        "y": 300,
+        "x": 1520,
+        "y": 580,
         "wires": []
     },
     {
         "id": "c11185ec76fab4e6",
         "type": "function",
         "z": "7d33f045adfa2ce5",
-        "name": "function 1",
-        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 860,
-        "y": 460,
+        "influxdb": "0504f462f986c487",
+        "name": "influx_cardiaque",
+        "measurement": "cardiaque",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "myorg",
+        "bucket": "mybucket",
+        "x": 760,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b836ff4cbe949f16",
+        "type": "influxdb out",
+        "z": "7d33f045adfa2ce5",
+        "influxdb": "0504f462f986c487",
+        "name": "influx_accelerometer",
+        "measurement": "accelerometer",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "myorg",
+        "bucket": "mybucket",
+        "x": 1500,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "f2b60cbeefd2e3d0",
+        "type": "ui_text",
+        "z": "7d33f045adfa2ce5",
+        "group": "bc962b1e502fdd92",
+        "order": 4,
+        "width": "6",
+        "height": "3",
+        "name": "",
+        "label": "Temps de conduite :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 180,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "2fcd9a7b2b30e030",
+        "type": "ui_text",
+        "z": "7d33f045adfa2ce5",
+        "group": "bc962b1e502fdd92",
+        "order": 4,
+        "width": "6",
+        "height": "3",
+        "name": "",
+        "label": "Temps de somnolence total :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 200,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "a1dd420e8d3ab6db",
+        "type": "ui_text",
+        "z": "7d33f045adfa2ce5",
+        "group": "bc962b1e502fdd92",
+        "order": 4,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "Pourcentage du trajet en somnolence :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 230,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "2ecc9dd35be6eb7d",
+        "type": "ui_text",
+        "z": "7d33f045adfa2ce5",
+        "group": "bc962b1e502fdd92",
+        "order": 4,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "Temps de somnolance la plus longue :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 230,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "5b8db29d67362fe0",
+        "type": "ui_text",
+        "z": "7d33f045adfa2ce5",
+        "group": "bc962b1e502fdd92",
+        "order": 4,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "Distance parcourue en somnolant :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 220,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "98d6736019d2b1b1",
+        "type": "ui_text",
+        "z": "7d33f045adfa2ce5",
+        "group": "bc962b1e502fdd92",
+        "order": 4,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "Nombre de dérives :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 180,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "8c6f8898105bb795",
+        "type": "ui_text",
+        "z": "7d33f045adfa2ce5",
+        "group": "bc962b1e502fdd92",
+        "order": 4,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "Nombre de dérives par heure:",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 210,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "8b7189480af46fec",
+        "type": "ui_text",
+        "z": "7d33f045adfa2ce5",
+        "group": "bc962b1e502fdd92",
+        "order": 4,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "Dérives à plus de 80 km/h :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 200,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "3aaa1015cc4d6a85",
+        "type": "ui_text",
+        "z": "7d33f045adfa2ce5",
+        "group": "bc962b1e502fdd92",
+        "order": 4,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "Horaires où les somnolence ont été les plus courantes :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 290,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "7fefe67424f81a80",
+        "type": "ui_text",
+        "z": "7d33f045adfa2ce5",
+        "group": "bc962b1e502fdd92",
+        "order": 4,
+        "width": "6",
+        "height": "2",
+        "name": "",
+        "label": "Distance la plus longue en somnolant :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 230,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "591fb441b02385cd",
+        "type": "http in",
+        "z": "7d33f045adfa2ce5",
+        "name": "Http_Home",
+        "url": "/app",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 660,
+        "y": 680,
         "wires": [
             [
-                "cdc061ab3ea10a11"
+                "e38e0d798e5fc06a"
             ]
         ]
     },
     {
-        "id": "697818e5b772060b",
+        "id": "c7d1bcaa5d6270f8",
+        "type": "http response",
+        "z": "7d33f045adfa2ce5",
+        "name": "http_out",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1200,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "22b77ab847911bf2",
+        "type": "http response",
+        "z": "7d33f045adfa2ce5",
+        "name": "http_out",
+        "statusCode": "200",
+        "headers": {},
+        "x": 1740,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "9f8fb2ff54ca0948",
         "type": "function",
         "z": "7d33f045adfa2ce5",
-        "name": "function 2",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
+        "name": "function 1",
+        "func": "msg.payload = \"accelerometer;\" + msg.payload.time;\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1360,
-        "y": 460,
+        "x": 1460,
+        "y": 440,
         "wires": [
             [
-                "f073d5f310fa046e"
+                "22b77ab847911bf2"
             ]
         ]
     },
     {
-        "id": "f7884997eb84cef4",
+        "id": "e38e0d798e5fc06a",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_Home",
+        "func": "msg.payload = \"ok\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 680,
+        "wires": [
+            [
+                "07385d52738bc212",
+                "c7d1bcaa5d6270f8"
+            ]
+        ]
+    },
+    {
+        "id": "07385d52738bc212",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug_Home",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1220,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "24ea63205d85fc42",
+        "type": "http in",
+        "z": "7d33f045adfa2ce5",
+        "name": "http_accelerometer2",
+        "url": "/app/accelerometer/:value",
+        "method": "get",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 240,
+        "wires": [
+            [
+                "bd0a2c1a516ff98a"
+            ]
+        ]
+    },
+    {
+        "id": "b131c8da435b513a",
         "type": "split",
         "z": "7d33f045adfa2ce5",
         "name": "",
-        "splt": "\\n",
+        "splt": "b",
         "spltType": "str",
         "arraySplt": 1,
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
         "property": "payload",
-        "x": 1210,
-        "y": 460,
+        "x": 750,
+        "y": 240,
         "wires": [
             [
-                "697818e5b772060b"
+                "309578c133f67608"
             ]
+        ]
+    },
+    {
+        "id": "bd0a2c1a516ff98a",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function_accelerometer",
+        "func": "msg.payload = msg.req.params.value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 240,
+        "wires": [
+            [
+                "b131c8da435b513a"
+            ]
+        ]
+    },
+    {
+        "id": "309578c133f67608",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 2",
+        "func": "if (msg.payload != \"\") {\n    let splitValue = msg.payload.split(':');\n    msg.payload = splitValue;\n}\nelse {\n    msg.payload = \"\";\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 240,
+        "wires": [
+            [
+                "97d7221dd416e070",
+                "b3dc753b3ee2c66c"
+            ]
+        ]
+    },
+    {
+        "id": "97d7221dd416e070",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 3",
+        "func": "if (msg.payload != \"\") {\n    msg.payload = \"accelerometer;\" +msg.payload[3];\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 240,
+        "wires": [
+            [
+                "62db381517c73141"
+            ]
+        ]
+    },
+    {
+        "id": "62db381517c73141",
+        "type": "join",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "a",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1450,
+        "y": 240,
+        "wires": [
+            [
+                "423db6665f468301"
+            ]
+        ]
+    },
+    {
+        "id": "b3dc753b3ee2c66c",
+        "type": "function",
+        "z": "7d33f045adfa2ce5",
+        "name": "function 4",
+        "func": "if (msg.payload != \"\") {\n    msg.payload = {\n        value_x: Number(msg.payload[0]),\n        value_y: Number(msg.payload[1]),\n        value_z: Number(msg.payload[2]),\n        time: msg.payload[3]\n    };\n}\nelse {\n    msg.payload = \"\";\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1120,
+        "y": 380,
+        "wires": [
+            [
+                "b836ff4cbe949f16"
+            ]
+        ]
+    },
+    {
+        "id": "423db6665f468301",
+        "type": "http response",
+        "z": "7d33f045adfa2ce5",
+        "name": "http_out",
+        "statusCode": "201",
+        "headers": {},
+        "x": 1760,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "ae99473e7e934f08",
+        "type": "ui_chart",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "group": "2d526cab482570ba",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Variance BPM",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1820,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "40fb8ed1e6bfbf86",
+        "type": "ui_chart",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "group": "161fc0b22611f508",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Dérive",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1790,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "27cbf55bb86ef3ce",
+        "type": "ui_chart",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "group": "161fc0b22611f508",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Somnolence",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1810,
+        "y": 1020,
+        "wires": [
+            []
         ]
     },
     {
@@ -363,13 +937,11 @@
         "payload": "",
         "payloadType": "date",
         "x": 670,
-        "y": 600,
+        "y": 860,
         "wires": [
             [
-                "c11185ec76fab4e6",
                 "2a8e1a2a90ea11cc",
-                "4893e5320b72cf77",
-                "75452706d234dade"
+                "59471b7ceaebbff2"
             ]
         ]
     },
@@ -377,7 +949,7 @@
         "id": "2a8e1a2a90ea11cc",
         "type": "function",
         "z": "7d33f045adfa2ce5",
-        "name": "function 3",
+        "name": "function_query_cardiaque",
         "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -385,68 +957,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
-        "y": 520,
-        "wires": [
-            [
-                "a653bc9186e1adbc"
-            ]
-        ]
-    },
-    {
-        "id": "c4b5c56dfa9ed72a",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 4",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1360,
-        "y": 520,
-        "wires": [
-            [
-                "ae99473e7e934f08"
-            ]
-        ]
-    },
-    {
-        "id": "e216fde94ac02884",
-        "type": "split",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1210,
-        "y": 520,
-        "wires": [
-            [
-                "c4b5c56dfa9ed72a"
-            ]
-        ]
-    },
-    {
-        "id": "4893e5320b72cf77",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 5",
-        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 860,
-        "y": 680,
+        "x": 910,
+        "y": 860,
         "wires": [
             [
                 "593796e545cbd362"
@@ -454,10 +966,29 @@
         ]
     },
     {
+        "id": "593796e545cbd362",
+        "type": "influxdb in",
+        "z": "7d33f045adfa2ce5",
+        "influxdb": "0504f462f986c487",
+        "name": "influx",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "myorg",
+        "x": 1150,
+        "y": 860,
+        "wires": [
+            [
+                "5a8e5a1e5a28c41c"
+            ]
+        ]
+    },
+    {
         "id": "dbc9bf148f5a2703",
         "type": "function",
         "z": "7d33f045adfa2ce5",
-        "name": "function 6",
+        "name": "function_split_cardiaque",
         "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
@@ -465,11 +996,14 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1360,
-        "y": 680,
+        "x": 1550,
+        "y": 860,
         "wires": [
             [
-                "40fb8ed1e6bfbf86"
+                "ae99473e7e934f08",
+                "40fb8ed1e6bfbf86",
+                "27cbf55bb86ef3ce",
+                "f073d5f310fa046e"
             ]
         ]
     },
@@ -485,8 +1019,8 @@
         "stream": false,
         "addname": "",
         "property": "payload",
-        "x": 1210,
-        "y": 680,
+        "x": 1350,
+        "y": 860,
         "wires": [
             [
                 "dbc9bf148f5a2703"
@@ -494,58 +1028,120 @@
         ]
     },
     {
-        "id": "75452706d234dade",
+        "id": "59471b7ceaebbff2",
         "type": "function",
         "z": "7d33f045adfa2ce5",
-        "name": "function 7",
-        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;",
+        "name": "function_query_accelerometre",
+        "func": "msg = {\n    query: 'from(bucket: \"mybucket\")\\n|> range(start: 2024-10-09)\\n  |> filter(fn: (r) => r[\"_measurement\"] == \"accelerometer\")\\n|> sort(columns: [\"_time\"], desc: false)'\n}\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 860,
-        "y": 740,
+        "x": 930,
+        "y": 940,
         "wires": [
             [
-                "bde80fef40b2b5b3"
+                "87e3aed8b5cb97bb"
             ]
         ]
     },
     {
-        "id": "99d06f8c01adaa0f",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function 8",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1360,
-        "y": 740,
-        "wires": [
-            [
-                "27cbf55bb86ef3ce"
-            ]
-        ]
-    },
-    {
-        "id": "eb1360d17be528fc",
+        "id": "8846096265213925",
         "type": "split",
         "z": "7d33f045adfa2ce5",
         "name": "",
         "splt": "\\n",
         "spltType": "str",
-        "arraySplt": 1,
+        "arraySplt": "3",
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
         "property": "payload",
-        "x": 1210,
+        "x": 1350,
+        "y": 940,
+        "wires": [
+            [
+                "fd2567d60181cbc3"
+            ]
+        ]
+    },
+    {
+        "id": "fd2567d60181cbc3",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "87e3aed8b5cb97bb",
+        "type": "influxdb in",
+        "z": "7d33f045adfa2ce5",
+        "influxdb": "0504f462f986c487",
+        "name": "influx",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "myorg",
+        "x": 1150,
+        "y": 940,
+        "wires": [
+            [
+                "8846096265213925"
+            ]
+        ]
+    },
+    {
+        "id": "f073d5f310fa046e",
+        "type": "ui_chart",
+        "z": "7d33f045adfa2ce5",
+        "name": "",
+        "group": "2d526cab482570ba",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "BPM",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1790,
         "y": 740,
         "wires": [
             [
