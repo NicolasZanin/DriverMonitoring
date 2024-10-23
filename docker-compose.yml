@@ -5,6 +5,8 @@ services:
       - TZ=Europe/Amsterdam
     ports:
       - 1880:1880
+    command:
+      bash -c "npm install node-red-contrib-influxdb && npm install node-red-dashboard && npm start"
     volumes:
       - ./data/node-red-data:/data
     networks:
