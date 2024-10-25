@@ -26,8 +26,12 @@ import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.TimeText
 import androidx.wear.tooling.preview.devices.WearDevices
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import com.drivermonitoring.drivermonitoringsmartwatch.R
 import com.drivermonitoring.drivermonitoringsmartwatch.presentation.theme.DriverMonitoringTheme
+import java.util.concurrent.TimeUnit
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +44,17 @@ class MainActivity : ComponentActivity() {
         setContent {
             WearApp("Android")
         }
+        scheduleNotification()
+    }
+
+    private fun scheduleNotification() {
+        val workRequest = PeriodicWorkRequestBuilder<BreakNotifier>(
+            2, TimeUnit.HOURS,  // Répétition toutes les 2 heures
+            10, TimeUnit.MINUTES // Flexibilité de 10 minutes
+        ).build()
+
+        WorkManager.getInstance(applicationContext)
+            .enqueue(workRequest)
     }
 
     override fun onStart() {
