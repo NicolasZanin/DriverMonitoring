@@ -8,6 +8,14 @@
         "env": []
     },
     {
+        "id": "ed404996291d3ded",
+        "type": "tab",
+        "label": "Flux 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "0504f462f986c487",
         "type": "influxdb",
         "hostname": "127.0.0.1",
@@ -134,9 +142,8 @@
         "tab": "26b1797a2f299d3c",
         "order": 1,
         "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
+        "width": "7",
+        "collapse": false
     },
     {
         "id": "2d526cab482570ba",
@@ -145,9 +152,8 @@
         "tab": "26b1797a2f299d3c",
         "order": 2,
         "disp": false,
-        "width": "20",
-        "collapse": false,
-        "className": ""
+        "width": "8",
+        "collapse": false
     },
     {
         "id": "161fc0b22611f508",
@@ -156,9 +162,8 @@
         "tab": "26b1797a2f299d3c",
         "order": 3,
         "disp": false,
-        "width": "20",
-        "collapse": false,
-        "className": ""
+        "width": "8",
+        "collapse": false
     },
     {
         "id": "3932fb80003a0cc6",
@@ -170,7 +175,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 180,
-        "y": 180,
+        "y": 120,
         "wires": [
             [
                 "80dfcfd3f6475bfe"
@@ -190,7 +195,7 @@
         "finalize": "",
         "libs": [],
         "x": 450,
-        "y": 180,
+        "y": 120,
         "wires": [
             [
                 "ce003374eaa7783a",
@@ -211,8 +216,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 770,
-        "y": 120,
+        "x": 450,
+        "y": 80,
         "wires": []
     },
     {
@@ -267,8 +272,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1520,
-        "y": 580,
+        "x": 1180,
+        "y": 480,
         "wires": []
     },
     {
@@ -280,8 +285,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 160,
-        "y": 520,
+        "x": 170,
+        "y": 580,
         "wires": [
             [
                 "e38e0d798e5fc06a"
@@ -296,7 +301,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 700,
-        "y": 520,
+        "y": 580,
         "wires": []
     },
     {
@@ -306,7 +311,7 @@
         "name": "http_out",
         "statusCode": "200",
         "headers": {},
-        "x": 1740,
+        "x": 1760,
         "y": 440,
         "wires": []
     },
@@ -343,7 +348,7 @@
         "finalize": "",
         "libs": [],
         "x": 440,
-        "y": 520,
+        "y": 580,
         "wires": [
             [
                 "07385d52738bc212",
@@ -364,8 +369,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 720,
-        "y": 560,
+        "x": 440,
+        "y": 540,
         "wires": []
     },
     {
@@ -397,7 +402,7 @@
         "stream": false,
         "addname": "",
         "property": "payload",
-        "x": 750,
+        "x": 730,
         "y": 240,
         "wires": [
             [
@@ -508,7 +513,7 @@
         "finalize": "",
         "libs": [],
         "x": 1120,
-        "y": 360,
+        "y": 340,
         "wires": [
             [
                 "b836ff4cbe949f16"
@@ -527,689 +532,6 @@
         "wires": []
     },
     {
-        "id": "fb7dca0f36671644",
-        "type": "inject",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 350,
-        "y": 1520,
-        "wires": [
-            [
-                "7dca89de491edd46",
-                "e1c31245a0acc885",
-                "c81067bee884d8c0"
-            ]
-        ]
-    },
-    {
-        "id": "2b646f6235241c25",
-        "type": "split",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1130,
-        "y": 1220,
-        "wires": [
-            [
-                "8132af8be8e785c7",
-                "bb85ebd4823d8ad7",
-                "5b02577af6df67b7"
-            ]
-        ]
-    },
-    {
-        "id": "8132af8be8e785c7",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 3",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1140,
-        "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "1c6d6cc6bd373b39",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 9",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1540,
-        "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "1c2fa474404d7a42",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 11",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1500,
-        "y": 1320,
-        "wires": []
-    },
-    {
-        "id": "05fe86f94fb83aa3",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "diviser par minute",
-        "func": "let data = msg.payload;\nlet groups = {};\n\n// Fonction pour arrondir l'heure à la minute la plus proche divisible par 5\nfunction roundTo5Minutes(time) {\n    // Extraire l'heure et les minutes\n    let date = new Date(time);\n    let minutes = date.getMinutes();\n    // Arrondir aux multiples de 5 minutes\n    let roundedMinutes = Math.floor(minutes / 5) * 5;\n    date.setMinutes(roundedMinutes);\n    date.setSeconds(0);\n    date.setMilliseconds(0);\n    return date.toISOString().substring(0, 16); // Retourne le timestamp au format \"YYYY-MM-DDTHH:mm\"\n}\n\n// Grouper les données par intervalle de 5 minutes\ndata.forEach(item => {\n    // Extraire la minute arrondie\n    let roundedMinute = roundTo5Minutes(item._time);\n\n    // Si cette minute n'existe pas encore dans le groupe, l'ajouter\n    if (!groups[roundedMinute]) {\n        groups[roundedMinute] = [];\n    }\n\n    // Ajouter la donnée à l'intervalle approprié\n    groups[roundedMinute].push(item);\n});\n\n// Envoyer les groupes\nmsg.payload = groups;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1170,
-        "y": 1360,
-        "wires": [
-            [
-                "8e2b1587b208ea7a",
-                "f0ebccd0ca8002d2"
-            ]
-        ]
-    },
-    {
-        "id": "8e2b1587b208ea7a",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 10",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1200,
-        "y": 1320,
-        "wires": []
-    },
-    {
-        "id": "f0ebccd0ca8002d2",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_variance",
-        "func": "// La variable msg.payload contient l'objet avec des timestamps et des données\nlet result = [];\n\n// Parcourir chaque timestamp dans msg.payload\nfor (let timestamp in msg.payload) {\n    let arrayData = msg.payload[timestamp];  // Le tableau de données pour ce timestamp\n\n    // Initialisation des variables pour les calculs min et max\n    let minVal = Infinity;\n    let maxVal = -Infinity;\n    let minTimestamp = null;\n\n    // Trouver la valeur minimale et maximale dans le tableau\n    arrayData.forEach(entry => {\n        let value = entry._value;\n        let entryTimestamp = entry._time;\n\n        // Mise à jour de la valeur minimale et maximale\n        if (value < minVal) {\n            minVal = value;\n            minTimestamp = entryTimestamp;  // Sauvegarder le timestamp de la valeur minimale\n        }\n        if (value > maxVal) {\n            maxVal = value;\n        }\n    });\n\n    // Calculer la différence absolue entre max et min\n    let diff = Math.abs(maxVal - minVal);\n\n    // Si la différence est supérieure à 15, on crée un point avec payload et timestamp\n    if (diff > 15) {\n        result.push({\n            _value: diff,\n            _time: minTimestamp  // Utiliser le timestamp de la valeur minimale\n        });\n    }\n}\n\n// Retourner le tableau résultat comme payload\nmsg.payload = result;\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1470,
-        "y": 1360,
-        "wires": [
-            [
-                "1c2fa474404d7a42",
-                "89b1cc43dcd30f04"
-            ]
-        ]
-    },
-    {
-        "id": "89b1cc43dcd30f04",
-        "type": "split",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1710,
-        "y": 1360,
-        "wires": [
-            [
-                "323ad185df70c6ca",
-                "8e44189e9ded9552"
-            ]
-        ]
-    },
-    {
-        "id": "323ad185df70c6ca",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 12",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1700,
-        "y": 1320,
-        "wires": []
-    },
-    {
-        "id": "2acdf17dfa50ab91",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 13",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2000,
-        "y": 1320,
-        "wires": []
-    },
-    {
-        "id": "bb85ebd4823d8ad7",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_split_cardiaque",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1490,
-        "y": 1220,
-        "wires": [
-            [
-                "1c6d6cc6bd373b39",
-                "18aba2a375c55cbd"
-            ]
-        ]
-    },
-    {
-        "id": "8e44189e9ded9552",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_split_variance",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1940,
-        "y": 1360,
-        "wires": [
-            [
-                "2acdf17dfa50ab91",
-                "b63f1b55ee1e71df"
-            ]
-        ]
-    },
-    {
-        "id": "d3f4bd9e863a4853",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "temps de conduite",
-        "func": "let data = msg.payload;\n\n// Trouver le timestamp le plus ancien et le plus récent dans l'ensemble du tableau\nlet oldestTimestamp = new Date(data[0]._time).getTime() / 1000;  // Conversion en secondes\nlet newestTimestamp = new Date(data[0]._time).getTime() / 1000;  // Conversion en secondes\n\ndata.forEach(item => {\n    let currentTimestamp = new Date(item._time).getTime() / 1000;  // Conversion en secondes\n    if (currentTimestamp < oldestTimestamp) {\n        oldestTimestamp = currentTimestamp;\n    }\n    if (currentTimestamp > newestTimestamp) {\n        newestTimestamp = currentTimestamp;\n    }\n});\n\n// Calculer la différence de temps en secondes directement\nlet timeDifferenceSec = newestTimestamp - oldestTimestamp;\n\n// Convertir la différence en heures et minutes\nlet hours = Math.floor(timeDifferenceSec / 3600);  // Obtenir le nombre d'heures\nlet minutes = Math.floor((timeDifferenceSec % 3600) / 60);  // Obtenir le reste en minutes\n\n// Formater en HH:MM\nlet formattedTimeDifference = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;\n\n// Retourner le message formaté\nmsg.payload = formattedTimeDifference;\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1170,
-        "y": 1460,
-        "wires": [
-            [
-                "b7b4fa8cd0ac52ff",
-                "3483d8448d95b648"
-            ]
-        ]
-    },
-    {
-        "id": "3483d8448d95b648",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 14",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1320,
-        "y": 1420,
-        "wires": []
-    },
-    {
-        "id": "7dca89de491edd46",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_query_accelerometer",
-        "func": "msg = {\n    payload: 'from(bucket: \"mybucket\")\\n' +\n             '|> range(start: 2024-10-23)\\n' +\n             '|> filter(fn: (r) => r[\"_measurement\"] == \"accelerometer\")'\n}\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 710,
-        "y": 1800,
-        "wires": [
-            [
-                "d7ed8f552e23e9b6",
-                "ca53f4b9ec04e2f8"
-            ]
-        ]
-    },
-    {
-        "id": "2071d3ec60d7a365",
-        "type": "split",
-        "z": "7d33f045adfa2ce5",
-        "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "property": "payload",
-        "x": 1130,
-        "y": 1800,
-        "wires": [
-            [
-                "c2dd441c3b5be4d0",
-                "0286cc355838c4b2"
-            ]
-        ]
-    },
-    {
-        "id": "ca53f4b9ec04e2f8",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 15",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 1760,
-        "wires": []
-    },
-    {
-        "id": "e7706dd2dc420924",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 16",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 960,
-        "y": 1760,
-        "wires": []
-    },
-    {
-        "id": "c2dd441c3b5be4d0",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 17",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1140,
-        "y": 1760,
-        "wires": []
-    },
-    {
-        "id": "0286cc355838c4b2",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_split_cardiaque",
-        "func": "msg.timestamp = msg.payload._time;\n\nif (msg.payload._field === \"value_x\" && (msg.payload._value > 0.2 || msg.payload._value < -0.2)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}\n\nif (msg.payload._field === \"value_y\" && (msg.payload._value > 0.3 || msg.payload._value < -0.3)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}\n\nreturn null;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1490,
-        "y": 1800,
-        "wires": [
-            [
-                "7441eb84e45b9f5c",
-                "4a860546a03c9abd"
-            ]
-        ]
-    },
-    {
-        "id": "7441eb84e45b9f5c",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 18",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1540,
-        "y": 1760,
-        "wires": []
-    },
-    {
-        "id": "e1c31245a0acc885",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_reset",
-        "func": "msg.payload = [];\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 620,
-        "y": 1500,
-        "wires": [
-            [
-                "c244ced9a5c0394e",
-                "18aba2a375c55cbd",
-                "b63f1b55ee1e71df",
-                "4a860546a03c9abd",
-                "89c694a863d8f045",
-                "9edfefe0b00502db",
-                "3ce76782794fa0b9",
-                "09bfd8172f93e5e2"
-            ]
-        ]
-    },
-    {
-        "id": "5b02577af6df67b7",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_somnolence",
-        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = (Number(msg.payload._value) < 60) ? 1 : 0;  // 1 si en somnolence, sinon 0\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1500,
-        "y": 1040,
-        "wires": [
-            [
-                "d22311564d4cfadb",
-                "c244ced9a5c0394e"
-            ]
-        ]
-    },
-    {
-        "id": "d22311564d4cfadb",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 8",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1540,
-        "y": 1000,
-        "wires": []
-    },
-    {
-        "id": "314cc303c41e5536",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_somnolence_max",
-        "func": "// Assumed that msg.payload is the array of data\nlet somnolenceData = msg.payload;\n\nlet somnolencePeriods = []; // No type annotations in JavaScript\nlet currentStartTime = null;\n\nfor (let i = 0; i < somnolenceData.length; i++) {\n    let dataPoint = somnolenceData[i];\n\n    if (dataPoint._value < 60) {\n        // If we are in a sleep period, start or continue it\n        if (currentStartTime === null) {\n            currentStartTime = new Date(dataPoint._time); // Starting the somnolence period\n        }\n    } else {\n        // If somnolence ends, record the period\n        if (currentStartTime !== null) {\n            let endTime = new Date(dataPoint._time);\n            let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000; // Duration in seconds\n            somnolencePeriods.push({\n                startTime: currentStartTime,\n                endTime: endTime,\n                duration: durationInSeconds\n            });\n            currentStartTime = null;\n        }\n    }\n}\n\n// Handle the case where the somnolence period ends at the last data point\nif (currentStartTime !== null) {\n    let endTime = new Date(somnolenceData[somnolenceData.length - 1]._time);\n    let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000;\n    somnolencePeriods.push({\n        startTime: currentStartTime,\n        endTime: endTime,\n        duration: durationInSeconds\n    });\n}\n\n// Find the longest somnolence period\nlet longestSleepPeriod = somnolencePeriods.reduce((max, current) => {\n    return current.duration > max.duration ? current : max;\n}, { duration: 0 });\n\n// Assuming longestSleepPeriod.duration is in seconds\nlet durationInSeconds = longestSleepPeriod.duration;\n\n// Calculate hours and minutes\nlet hours = Math.floor(durationInSeconds / 3600); // 1 hour = 3600 seconds\nlet minutes = Math.floor((durationInSeconds % 3600) / 60); // 1 minute = 60 seconds\n\n// Format as HH:MM\nlet formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;\n\nreturn {\n    payload: formattedDuration\n};\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1220,
-        "y": 940,
-        "wires": [
-            [
-                "89c694a863d8f045",
-                "3de7096886fc7f3c"
-            ]
-        ]
-    },
-    {
-        "id": "3de7096886fc7f3c",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 5",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1280,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "a5a6f2f2a7a88dae",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_somnolence_total",
-        "func": "// Assumed that msg.payload is the array of data\nlet somnolenceData = msg.payload;\n\nlet totalSomnolenceDuration = 0; // Initialize total somnolence time in seconds\nlet currentStartTime = null;\n\nfor (let i = 0; i < somnolenceData.length; i++) {\n    let dataPoint = somnolenceData[i];\n\n    if (dataPoint._value < 60) {\n        // If we are in a sleep period, start or continue it\n        if (currentStartTime === null) {\n            currentStartTime = new Date(dataPoint._time); // Starting the somnolence period\n        }\n    } else {\n        // If somnolence ends, record the period\n        if (currentStartTime !== null) {\n            let endTime = new Date(dataPoint._time);\n            let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000; // Duration in seconds\n            totalSomnolenceDuration += durationInSeconds; // Add duration to the total\n            currentStartTime = null;\n        }\n    }\n}\n\n// Handle the case where the somnolence period ends at the last data point\nif (currentStartTime !== null) {\n    let endTime = new Date(somnolenceData[somnolenceData.length - 1]._time);\n    let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000;\n    totalSomnolenceDuration += durationInSeconds; // Add duration to the total\n}\n\n// Calculate hours and minutes for the total somnolence time\nlet hours = Math.floor(totalSomnolenceDuration / 3600); // 1 hour = 3600 seconds\nlet minutes = Math.floor((totalSomnolenceDuration % 3600) / 60); // 1 minute = 60 seconds\n\n// Format as HH:MM\nlet formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;\n\nreturn {\n    payload: formattedDuration\n};",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1220,
-        "y": 820,
-        "wires": [
-            [
-                "9edfefe0b00502db",
-                "b163b680656b5dee"
-            ]
-        ]
-    },
-    {
-        "id": "12888b2a5e1b9ae3",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_somnolence_frequent",
-        "func": "// Assumed that msg.payload is the array of data\nlet somnolenceData = msg.payload;\n\n// Initialize a map to store somnolence counts for each hour (0 to 23)\nlet somnolenceByHour = Array(24).fill(0);\n\nfor (let i = 0; i < somnolenceData.length; i++) {\n    let dataPoint = somnolenceData[i];\n\n    if (dataPoint._value < 60) {\n        // If somnolence is detected, get the hour from the timestamp\n        let timestamp = new Date(dataPoint._time);\n        let hour = timestamp.getHours(); // Extract the hour from the timestamp\n        somnolenceByHour[hour] += 1; // Increment the count for this hour\n    }\n}\n\n// Find the hour with the most frequent somnolence\nlet mostCommonHour = somnolenceByHour.reduce((max, count, index) => {\n    return count > max.count ? { hour: index, count: count } : max;\n}, { hour: -1, count: 0 });\n\n// Format the hour into HH:00 (e.g., \"08:00\" for 8 AM)\nlet formattedHour = `${mostCommonHour.hour.toString().padStart(2, '0')}:00`;\n\nreturn {\n    payload: formattedHour\n};",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1230,
-        "y": 720,
-        "wires": [
-            [
-                "34321679355a50fc",
-                "3ce76782794fa0b9"
-            ]
-        ]
-    },
-    {
-        "id": "b163b680656b5dee",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 6",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1280,
-        "y": 780,
-        "wires": []
-    },
-    {
-        "id": "34321679355a50fc",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 7",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1280,
-        "y": 680,
-        "wires": []
-    },
-    {
-        "id": "0a90a7a026c1847f",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_count_dérive",
-        "func": "// Initialize a variable to count the number of derivatives\nlet derivativeCount = 0;\n\n// Iterate through each item in the payload\nfor (let i = 0; i < msg.payload.length; i++) {\n    let dataPoint = msg.payload[i];  // Get the current data point\n\n    // Check for \"value_x\" field and the specified condition\n    if (dataPoint._field === \"value_x\" && (dataPoint._value > 0.2 || dataPoint._value < -0.2)) {\n        derivativeCount += 1;  // Increment the derivative count for \"value_x\"\n    }\n\n    // Check for \"value_y\" field and the specified condition\n    if (dataPoint._field === \"value_y\" && (dataPoint._value > 0.3 || dataPoint._value < -0.3)) {\n        derivativeCount += 1;  // Increment the derivative count for \"value_y\"\n    }\n}\n\n// Return the count of derivatives\nreturn {\n    payload: derivativeCount\n};",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1180,
-        "y": 1920,
-        "wires": [
-            [
-                "09bfd8172f93e5e2"
-            ]
-        ]
-    },
-    {
-        "id": "c81067bee884d8c0",
-        "type": "function",
-        "z": "7d33f045adfa2ce5",
-        "name": "function_query_cardiaque",
-        "func": "msg = {\n    payload: 'from(bucket: \"mybucket\")\\n' +\n        '|> range(start: 2024-10-23)\\n' +\n        '|> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 690,
-        "y": 1220,
-        "wires": [
-            [
-                "07e0c2da0cdde893",
-                "f09cec024961d734"
-            ]
-        ]
-    },
-    {
-        "id": "f09cec024961d734",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 1",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 740,
-        "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "3c31b3496d099292",
-        "type": "debug",
-        "z": "7d33f045adfa2ce5",
-        "name": "debug 2",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 960,
-        "y": 1180,
-        "wires": []
-    },
-    {
         "id": "0ee71603d9dc2bbf",
         "type": "influxdb out",
         "z": "7d33f045adfa2ce5",
@@ -1224,7 +546,7 @@
         "org": "myorg",
         "bucket": "mybucket",
         "x": 760,
-        "y": 180,
+        "y": 120,
         "wires": []
     },
     {
@@ -1242,13 +564,688 @@
         "org": "myorg",
         "bucket": "mybucket",
         "x": 1500,
-        "y": 360,
+        "y": 340,
         "wires": []
     },
     {
-        "id": "d7ed8f552e23e9b6",
+        "id": "09df93ddef7eba1f",
+        "type": "inject",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 1040,
+        "wires": [
+            [
+                "d408acef9282edf2",
+                "71c7c433901741ed",
+                "693d1b46748bd487"
+            ]
+        ]
+    },
+    {
+        "id": "38797788f6b75bb1",
+        "type": "split",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 1270,
+        "y": 740,
+        "wires": [
+            [
+                "d06c4f0dd84decfd",
+                "1be976bde64a6ddc"
+            ]
+        ]
+    },
+    {
+        "id": "d06c4f0dd84decfd",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 19",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "19f99a9035d9286b",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 20",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1740,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "0a271ea1c05f0274",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 21",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1960,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "c220fb837f10ecec",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "diviser par minute",
+        "func": "let data = msg.payload;\nlet groups = {};\n\n// Fonction pour arrondir l'heure à la minute la plus proche divisible par 5\nfunction roundTo5Minutes(time) {\n    // Extraire l'heure et les minutes\n    let date = new Date(time);\n    let minutes = date.getMinutes();\n    // Arrondir aux multiples de 5 minutes\n    let roundedMinutes = Math.floor(minutes / 5) * 5;\n    date.setMinutes(roundedMinutes);\n    date.setSeconds(0);\n    date.setMilliseconds(0);\n    return date.toISOString().substring(0, 16); // Retourne le timestamp au format \"YYYY-MM-DDTHH:mm\"\n}\n\n// Grouper les données par intervalle de 5 minutes\ndata.forEach(item => {\n    // Extraire la minute arrondie\n    let roundedMinute = roundTo5Minutes(item._time);\n\n    // Si cette minute n'existe pas encore dans le groupe, l'ajouter\n    if (!groups[roundedMinute]) {\n        groups[roundedMinute] = [];\n    }\n\n    // Ajouter la donnée à l'intervalle approprié\n    groups[roundedMinute].push(item);\n});\n\n// Envoyer les groupes\nmsg.payload = groups;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1670,
+        "y": 1000,
+        "wires": [
+            [
+                "0e2f9bfa9a7e793b",
+                "a038f64817f726e4"
+            ]
+        ]
+    },
+    {
+        "id": "0e2f9bfa9a7e793b",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 22",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1700,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "a038f64817f726e4",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_variance",
+        "func": "// La variable msg.payload contient l'objet avec des timestamps et des données\nlet result = [];\n\n// Parcourir chaque timestamp dans msg.payload\nfor (let timestamp in msg.payload) {\n    let arrayData = msg.payload[timestamp];  // Le tableau de données pour ce timestamp\n\n    // Initialisation des variables pour les calculs min et max\n    let minVal = Infinity;\n    let maxVal = -Infinity;\n    let minTimestamp = null;\n\n    // Trouver la valeur minimale et maximale dans le tableau\n    arrayData.forEach(entry => {\n        let value = entry._value;\n        let entryTimestamp = entry._time;\n\n        // Mise à jour de la valeur minimale et maximale\n        if (value < minVal) {\n            minVal = value;\n            minTimestamp = entryTimestamp;  // Sauvegarder le timestamp de la valeur minimale\n        }\n        if (value > maxVal) {\n            maxVal = value;\n        }\n    });\n\n    // Calculer la différence absolue entre max et min\n    let diff = Math.abs(maxVal - minVal);\n\n    // Si la différence est supérieure à 15, on crée un point avec payload et timestamp\n    if (diff > 15) {\n        result.push({\n            _value: diff,\n            _time: minTimestamp  // Utiliser le timestamp de la valeur minimale\n        });\n    }\n}\n\n// Retourner le tableau résultat comme payload\nmsg.payload = result;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1930,
+        "y": 1000,
+        "wires": [
+            [
+                "0a271ea1c05f0274",
+                "991e91987dc7b559"
+            ]
+        ]
+    },
+    {
+        "id": "991e91987dc7b559",
+        "type": "split",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 2170,
+        "y": 1000,
+        "wires": [
+            [
+                "0a92b84107a7fe24",
+                "1771e987bb5ece15"
+            ]
+        ]
+    },
+    {
+        "id": "0a92b84107a7fe24",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 23",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2160,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "1f5ad6f60858e5bb",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 24",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2440,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "6b2d9c8e5b3cc841",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_split_cardiaque",
+        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1690,
+        "y": 880,
+        "wires": [
+            [
+                "19f99a9035d9286b",
+                "513022792c668345"
+            ]
+        ]
+    },
+    {
+        "id": "1771e987bb5ece15",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_split_variance",
+        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = Number(msg.payload._value);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2400,
+        "y": 1000,
+        "wires": [
+            [
+                "1f5ad6f60858e5bb",
+                "497cc7c60269247b"
+            ]
+        ]
+    },
+    {
+        "id": "2a6ec5c53c0965ec",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "temps de conduite",
+        "func": "let data = msg.payload;\n\n// Trouver le timestamp le plus ancien et le plus récent dans l'ensemble du tableau\nlet oldestTimestamp = new Date(data[0]._time).getTime() / 1000;  // Conversion en secondes\nlet newestTimestamp = new Date(data[0]._time).getTime() / 1000;  // Conversion en secondes\n\ndata.forEach(item => {\n    let currentTimestamp = new Date(item._time).getTime() / 1000;  // Conversion en secondes\n    if (currentTimestamp < oldestTimestamp) {\n        oldestTimestamp = currentTimestamp;\n    }\n    if (currentTimestamp > newestTimestamp) {\n        newestTimestamp = currentTimestamp;\n    }\n});\n\n// Calculer la différence de temps en secondes directement\nlet timeDifferenceSec = newestTimestamp - oldestTimestamp;\n\n// Convertir la différence en heures et minutes\nlet hours = Math.floor(timeDifferenceSec / 3600);  // Obtenir le nombre d'heures\nlet minutes = Math.floor((timeDifferenceSec % 3600) / 60);  // Obtenir le reste en minutes\n\n// Formater en HH:MM\nlet formattedTimeDifference = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;\n\n// Retourner le message formaté\nmsg.payload = formattedTimeDifference;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1670,
+        "y": 160,
+        "wires": [
+            [
+                "9981306c33188658",
+                "4f6bc1f5523f4d98"
+            ]
+        ]
+    },
+    {
+        "id": "4f6bc1f5523f4d98",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 25",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1700,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d408acef9282edf2",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_query_accelerometer",
+        "func": "msg = {\n    payload: 'from(bucket: \"mybucket\")\\n' +\n             '|> range(start: 2024-10-23)\\n' +\n             '|> filter(fn: (r) => r[\"_measurement\"] == \"accelerometer\")'\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 1320,
+        "wires": [
+            [
+                "7c27dec090e8f320",
+                "2fef56f36bb01d75"
+            ]
+        ]
+    },
+    {
+        "id": "ea73cbddbffcb53e",
+        "type": "split",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "property": "payload",
+        "x": 1270,
+        "y": 1320,
+        "wires": [
+            [
+                "200d32686dadc41b",
+                "4db12aa6235a6764"
+            ]
+        ]
+    },
+    {
+        "id": "2fef56f36bb01d75",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 26",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "7ba7c82171431853",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 27",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "200d32686dadc41b",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 28",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1280,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "2b9760c2d215c9a1",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_split_cardiaque",
+        "func": "msg.timestamp = msg.payload._time;\n\nif (msg.payload._field === \"value_x\" && (msg.payload._value > 0.2 || msg.payload._value < -0.2)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}\n\nif (msg.payload._field === \"value_y\" && (msg.payload._value > 0.3 || msg.payload._value < -0.3)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}\n\nreturn null;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1690,
+        "y": 1320,
+        "wires": [
+            [
+                "488d553fc222087d",
+                "70fdfd3ed7c759fc"
+            ]
+        ]
+    },
+    {
+        "id": "488d553fc222087d",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 29",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1740,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "71c7c433901741ed",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_reset",
+        "func": "msg.payload = [];\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 1040,
+        "wires": [
+            [
+                "c0fe076b8533cb9a"
+            ]
+        ]
+    },
+    {
+        "id": "4b06fb50e1baf3bb",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_somnolence",
+        "func": "msg.timestamp = msg.payload._time;\nmsg.payload = (Number(msg.payload._value) < 60) ? 1 : 0;  // 1 si en somnolence, sinon 0\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1680,
+        "y": 660,
+        "wires": [
+            [
+                "aa61fc8400637083",
+                "2e91625f303a2201"
+            ]
+        ]
+    },
+    {
+        "id": "aa61fc8400637083",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 30",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1720,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "06bdd82dd9bc56b6",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_somnolence_max",
+        "func": "// Assumed that msg.payload is the array of data\nlet somnolenceData = msg.payload;\n\nlet somnolencePeriods = []; // No type annotations in JavaScript\nlet currentStartTime = null;\n\nfor (let i = 0; i < somnolenceData.length; i++) {\n    let dataPoint = somnolenceData[i];\n\n    if (dataPoint._value < 60) {\n        // If we are in a sleep period, start or continue it\n        if (currentStartTime === null) {\n            currentStartTime = new Date(dataPoint._time); // Starting the somnolence period\n        }\n    } else {\n        // If somnolence ends, record the period\n        if (currentStartTime !== null) {\n            let endTime = new Date(dataPoint._time);\n            let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000; // Duration in seconds\n            somnolencePeriods.push({\n                startTime: currentStartTime,\n                endTime: endTime,\n                duration: durationInSeconds\n            });\n            currentStartTime = null;\n        }\n    }\n}\n\n// Handle the case where the somnolence period ends at the last data point\nif (currentStartTime !== null) {\n    let endTime = new Date(somnolenceData[somnolenceData.length - 1]._time);\n    let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000;\n    somnolencePeriods.push({\n        startTime: currentStartTime,\n        endTime: endTime,\n        duration: durationInSeconds\n    });\n}\n\n// Find the longest somnolence period\nlet longestSleepPeriod = somnolencePeriods.reduce((max, current) => {\n    return current.duration > max.duration ? current : max;\n}, { duration: 0 });\n\n// Assuming longestSleepPeriod.duration is in seconds\nlet durationInSeconds = longestSleepPeriod.duration;\n\n// Calculate hours and minutes\nlet hours = Math.floor(durationInSeconds / 3600); // 1 hour = 3600 seconds\nlet minutes = Math.floor((durationInSeconds % 3600) / 60); // 1 minute = 60 seconds\n\n// Format as HH:MM\nlet formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;\n\nreturn {\n    payload: formattedDuration\n};\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1700,
+        "y": 560,
+        "wires": [
+            [
+                "c5ecbcda550ada7d",
+                "56677260e08b616f"
+            ]
+        ]
+    },
+    {
+        "id": "56677260e08b616f",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 31",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1760,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "c209b04d8876298f",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_somnolence_total",
+        "func": "// Assumed that msg.payload is the array of data\nlet somnolenceData = msg.payload;\n\nlet totalSomnolenceDuration = 0; // Initialize total somnolence time in seconds\nlet currentStartTime = null;\n\nfor (let i = 0; i < somnolenceData.length; i++) {\n    let dataPoint = somnolenceData[i];\n\n    if (dataPoint._value < 60) {\n        // If we are in a sleep period, start or continue it\n        if (currentStartTime === null) {\n            currentStartTime = new Date(dataPoint._time); // Starting the somnolence period\n        }\n    } else {\n        // If somnolence ends, record the period\n        if (currentStartTime !== null) {\n            let endTime = new Date(dataPoint._time);\n            let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000; // Duration in seconds\n            totalSomnolenceDuration += durationInSeconds; // Add duration to the total\n            currentStartTime = null;\n        }\n    }\n}\n\n// Handle the case where the somnolence period ends at the last data point\nif (currentStartTime !== null) {\n    let endTime = new Date(somnolenceData[somnolenceData.length - 1]._time);\n    let durationInSeconds = (endTime.getTime() - currentStartTime.getTime()) / 1000;\n    totalSomnolenceDuration += durationInSeconds; // Add duration to the total\n}\n\n// Calculate hours and minutes for the total somnolence time\nlet hours = Math.floor(totalSomnolenceDuration / 3600); // 1 hour = 3600 seconds\nlet minutes = Math.floor((totalSomnolenceDuration % 3600) / 60); // 1 minute = 60 seconds\n\n// Format as HH:MM\nlet formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;\n\nreturn {\n    payload: formattedDuration\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1700,
+        "y": 460,
+        "wires": [
+            [
+                "a9bccde7a97339d8",
+                "cb2beef8d7fa69f6"
+            ]
+        ]
+    },
+    {
+        "id": "466064a18fa952a4",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_somnolence_frequent",
+        "func": "// Assumed that msg.payload is the array of data\nlet somnolenceData = msg.payload;\n\n// Initialize a map to store somnolence counts for each hour (0 to 23)\nlet somnolenceByHour = Array(24).fill(0);\n\nfor (let i = 0; i < somnolenceData.length; i++) {\n    let dataPoint = somnolenceData[i];\n\n    if (dataPoint._value < 60) {\n        // If somnolence is detected, get the hour from the timestamp\n        let timestamp = new Date(dataPoint._time);\n        let hour = timestamp.getHours(); // Extract the hour from the timestamp\n        somnolenceByHour[hour] += 1; // Increment the count for this hour\n    }\n}\n\n// Find the hour with the most frequent somnolence\nlet mostCommonHour = somnolenceByHour.reduce((max, count, index) => {\n    return count > max.count ? { hour: index, count: count } : max;\n}, { hour: -1, count: 0 });\n\n// Format the hour into HH:00 (e.g., \"08:00\" for 8 AM)\nlet formattedHour = `${mostCommonHour.hour.toString().padStart(2, '0')}:00`;\n\nreturn {\n    payload: formattedHour\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1710,
+        "y": 360,
+        "wires": [
+            [
+                "2e017bc182839095",
+                "1f208e688fdd6873"
+            ]
+        ]
+    },
+    {
+        "id": "cb2beef8d7fa69f6",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 32",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1760,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "2e017bc182839095",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 33",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1780,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "5fdf4ca7e76e76e6",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_count_dérive",
+        "func": "// Initialize a variable to count the number of derivatives\nlet derivativeCount = 0;\n\n// Iterate through each item in the payload\nfor (let i = 0; i < msg.payload.length; i++) {\n    let dataPoint = msg.payload[i];  // Get the current data point\n\n    // Check for \"value_x\" field and the specified condition\n    if (dataPoint._field === \"value_x\" && (dataPoint._value > 0.2 || dataPoint._value < -0.2)) {\n        derivativeCount += 1;  // Increment the derivative count for \"value_x\"\n    }\n\n    // Check for \"value_y\" field and the specified condition\n    if (dataPoint._field === \"value_y\" && (dataPoint._value > 0.3 || dataPoint._value < -0.3)) {\n        derivativeCount += 1;  // Increment the derivative count for \"value_y\"\n    }\n}\n\n// Return the count of derivatives\nreturn {\n    payload: derivativeCount\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1680,
+        "y": 1420,
+        "wires": [
+            [
+                "31e07b02e92ebe47"
+            ]
+        ]
+    },
+    {
+        "id": "693d1b46748bd487",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_query_cardiaque",
+        "func": "msg = {\n    payload: 'from(bucket: \"mybucket\")\\n' +\n        '|> range(start: 2024-10-23)\\n' +\n        '|> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")'\n}\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 740,
+        "wires": [
+            [
+                "f3f02569dba8e250",
+                "52ed2e4a4e410830"
+            ]
+        ]
+    },
+    {
+        "id": "52ed2e4a4e410830",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 34",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "be4d60f3deb11380",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 35",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 920,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "7c27dec090e8f320",
         "type": "influxdb in",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "influxdb": "0504f462f986c487",
         "name": "influx_accelerometer",
         "query": "from(bucket: \"mybucket\")\n  |> range(start: 2024-10-23, stop: 2024-10-24)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"accelerometer\")",
@@ -1256,20 +1253,19 @@
         "precision": "",
         "retentionPolicy": "",
         "org": "myorg",
-        "x": 960,
-        "y": 1800,
+        "x": 940,
+        "y": 1320,
         "wires": [
             [
-                "2071d3ec60d7a365",
-                "e7706dd2dc420924",
-                "0a90a7a026c1847f"
+                "7ba7c82171431853",
+                "d0a4f3c18182ee4e"
             ]
         ]
     },
     {
-        "id": "07e0c2da0cdde893",
+        "id": "f3f02569dba8e250",
         "type": "influxdb in",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "influxdb": "0504f462f986c487",
         "name": "influx_cardiaque",
         "query": "from(bucket: \"mybucket\")\n  |> range(start: 2024-10-23, stop: 2024-10-24)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")",
@@ -1277,134 +1273,104 @@
         "precision": "",
         "retentionPolicy": "",
         "org": "myorg",
-        "x": 940,
-        "y": 1220,
+        "x": 900,
+        "y": 740,
         "wires": [
             [
-                "2b646f6235241c25",
-                "3c31b3496d099292",
-                "05fe86f94fb83aa3",
-                "d3f4bd9e863a4853",
-                "314cc303c41e5536",
-                "a5a6f2f2a7a88dae",
-                "12888b2a5e1b9ae3"
+                "be4d60f3deb11380",
+                "0d668210c6d9b0d1"
             ]
         ]
     },
     {
-        "id": "b7b4fa8cd0ac52ff",
+        "id": "9981306c33188658",
         "type": "ui_text",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "group": "bc962b1e502fdd92",
         "order": 4,
-        "width": "6",
-        "height": "3",
+        "width": "7",
+        "height": "2",
         "name": "",
         "label": "Temps de conduite :",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 1480,
-        "y": 1460,
+        "x": 2740,
+        "y": 160,
         "wires": []
     },
     {
-        "id": "9edfefe0b00502db",
+        "id": "a9bccde7a97339d8",
         "type": "ui_text",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "group": "bc962b1e502fdd92",
         "order": 4,
-        "width": "6",
-        "height": "5",
+        "width": "7",
+        "height": "2",
         "name": "",
         "label": "Temps de somnolence total :",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 2340,
-        "y": 840,
+        "x": 2760,
+        "y": 460,
         "wires": []
     },
     {
-        "id": "89c694a863d8f045",
+        "id": "c5ecbcda550ada7d",
         "type": "ui_text",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "group": "bc962b1e502fdd92",
         "order": 4,
-        "width": "6",
-        "height": "4",
+        "width": "7",
+        "height": "1",
         "name": "",
         "label": "Temps de somnolance la plus longue :",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 2370,
-        "y": 900,
+        "x": 2790,
+        "y": 560,
         "wires": []
     },
     {
-        "id": "09bfd8172f93e5e2",
+        "id": "31e07b02e92ebe47",
         "type": "ui_text",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "group": "bc962b1e502fdd92",
         "order": 4,
-        "width": "6",
-        "height": "4",
+        "width": "7",
+        "height": "1",
         "name": "",
         "label": "Nombre de dérives :",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 2320,
-        "y": 1920,
+        "x": 2740,
+        "y": 1420,
         "wires": []
     },
     {
-        "id": "3ce76782794fa0b9",
+        "id": "1f208e688fdd6873",
         "type": "ui_text",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "group": "bc962b1e502fdd92",
         "order": 4,
-        "width": "6",
-        "height": "5",
+        "width": "7",
+        "height": "2",
         "name": "",
         "label": "Horaires où les somnolence ont été les plus courantes :",
         "format": "{{msg.payload}}",
         "layout": "row-spread",
-        "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": 16,
-        "color": "#000000",
-        "x": 2430,
-        "y": 720,
+        "x": 2850,
+        "y": 360,
         "wires": []
     },
     {
-        "id": "c244ced9a5c0394e",
+        "id": "2e91625f303a2201",
         "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "name": "",
         "group": "161fc0b22611f508",
         "order": 1,
-        "width": 0,
-        "height": 0,
+        "width": "8",
+        "height": "5",
         "label": "Somnolence",
         "chartType": "line",
         "legend": "false",
@@ -1433,17 +1399,16 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "className": "",
-        "x": 2290,
-        "y": 1060,
+        "x": 2710,
+        "y": 660,
         "wires": [
             []
         ]
     },
     {
-        "id": "18aba2a375c55cbd",
+        "id": "513022792c668345",
         "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "name": "",
         "group": "2d526cab482570ba",
         "order": 1,
@@ -1477,22 +1442,21 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "className": "",
-        "x": 2270,
-        "y": 1220,
+        "x": 2690,
+        "y": 880,
         "wires": [
             []
         ]
     },
     {
-        "id": "b63f1b55ee1e71df",
+        "id": "497cc7c60269247b",
         "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "name": "",
         "group": "2d526cab482570ba",
         "order": 1,
-        "width": 0,
-        "height": 0,
+        "width": "8",
+        "height": "4",
         "label": "Variance",
         "chartType": "line",
         "legend": "false",
@@ -1521,22 +1485,421 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "className": "",
-        "x": 2280,
-        "y": 1360,
+        "x": 2700,
+        "y": 1000,
         "wires": [
             []
         ]
     },
     {
-        "id": "4a860546a03c9abd",
+        "id": "c0fe076b8533cb9a",
+        "type": "link out",
+        "z": "ed404996291d3ded",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "3051c207a7d49b3e",
+            "c552629d535ab089",
+            "ad654747261209d9",
+            "87d5fc621958312c",
+            "1826fffac7eb7af0",
+            "e2d409c4164d87d3",
+            "c6fba70adc0fd0db",
+            "371c5121c077dae6",
+            "b320b39b1c5284aa"
+        ],
+        "x": 755,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "b320b39b1c5284aa",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 1",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 2615,
+        "y": 340,
+        "wires": [
+            [
+                "1f208e688fdd6873"
+            ]
+        ]
+    },
+    {
+        "id": "371c5121c077dae6",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 2",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 2615,
+        "y": 440,
+        "wires": [
+            [
+                "a9bccde7a97339d8"
+            ]
+        ]
+    },
+    {
+        "id": "c6fba70adc0fd0db",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 3",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 2615,
+        "y": 540,
+        "wires": [
+            [
+                "c5ecbcda550ada7d"
+            ]
+        ]
+    },
+    {
+        "id": "e2d409c4164d87d3",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 4",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 2615,
+        "y": 640,
+        "wires": [
+            [
+                "2e91625f303a2201"
+            ]
+        ]
+    },
+    {
+        "id": "1826fffac7eb7af0",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 5",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 2615,
+        "y": 860,
+        "wires": [
+            [
+                "513022792c668345"
+            ]
+        ]
+    },
+    {
+        "id": "87d5fc621958312c",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 6",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 2615,
+        "y": 980,
+        "wires": [
+            [
+                "497cc7c60269247b"
+            ]
+        ]
+    },
+    {
+        "id": "ad654747261209d9",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 7",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 2615,
+        "y": 140,
+        "wires": [
+            [
+                "9981306c33188658"
+            ]
+        ]
+    },
+    {
+        "id": "c552629d535ab089",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 8",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 2615,
+        "y": 1300,
+        "wires": [
+            [
+                "70fdfd3ed7c759fc"
+            ]
+        ]
+    },
+    {
+        "id": "3051c207a7d49b3e",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 9",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 2615,
+        "y": 1400,
+        "wires": [
+            [
+                "31e07b02e92ebe47"
+            ]
+        ]
+    },
+    {
+        "id": "9b9262a0b8bc1164",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 10",
+        "links": [
+            "0d668210c6d9b0d1"
+        ],
+        "x": 1535,
+        "y": 360,
+        "wires": [
+            [
+                "466064a18fa952a4"
+            ]
+        ]
+    },
+    {
+        "id": "318b35e8705e3f17",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 11",
+        "links": [
+            "0d668210c6d9b0d1"
+        ],
+        "x": 1535,
+        "y": 460,
+        "wires": [
+            [
+                "c209b04d8876298f"
+            ]
+        ]
+    },
+    {
+        "id": "be28b046bc4f13dd",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 12",
+        "links": [
+            "0d668210c6d9b0d1"
+        ],
+        "x": 1535,
+        "y": 560,
+        "wires": [
+            [
+                "06bdd82dd9bc56b6"
+            ]
+        ]
+    },
+    {
+        "id": "4892167f1b10c094",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 13",
+        "links": [
+            "0d668210c6d9b0d1"
+        ],
+        "x": 1175,
+        "y": 740,
+        "wires": [
+            [
+                "38797788f6b75bb1"
+            ]
+        ]
+    },
+    {
+        "id": "d7200af8396c4270",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 14",
+        "links": [
+            "0d668210c6d9b0d1"
+        ],
+        "x": 1535,
+        "y": 1000,
+        "wires": [
+            [
+                "c220fb837f10ecec"
+            ]
+        ]
+    },
+    {
+        "id": "812e6c6c41ca41aa",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 15",
+        "links": [
+            "0d668210c6d9b0d1"
+        ],
+        "x": 1535,
+        "y": 160,
+        "wires": [
+            [
+                "2a6ec5c53c0965ec"
+            ]
+        ]
+    },
+    {
+        "id": "0d668210c6d9b0d1",
+        "type": "link out",
+        "z": "ed404996291d3ded",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "9b9262a0b8bc1164",
+            "318b35e8705e3f17",
+            "be28b046bc4f13dd",
+            "4892167f1b10c094",
+            "d7200af8396c4270",
+            "812e6c6c41ca41aa"
+        ],
+        "x": 1045,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "515e79ed6f5b7edb",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 16",
+        "links": [
+            "1be976bde64a6ddc"
+        ],
+        "x": 1535,
+        "y": 660,
+        "wires": [
+            [
+                "4b06fb50e1baf3bb"
+            ]
+        ]
+    },
+    {
+        "id": "1be976bde64a6ddc",
+        "type": "link out",
+        "z": "ed404996291d3ded",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "515e79ed6f5b7edb",
+            "6acc44d91f02bad2"
+        ],
+        "x": 1385,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "6acc44d91f02bad2",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 17",
+        "links": [
+            "1be976bde64a6ddc"
+        ],
+        "x": 1535,
+        "y": 880,
+        "wires": [
+            [
+                "6b2d9c8e5b3cc841"
+            ]
+        ]
+    },
+    {
+        "id": "46b7ac9ec1871222",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 18",
+        "links": [
+            "4db12aa6235a6764"
+        ],
+        "x": 1535,
+        "y": 1320,
+        "wires": [
+            [
+                "2b9760c2d215c9a1"
+            ]
+        ]
+    },
+    {
+        "id": "4db12aa6235a6764",
+        "type": "link out",
+        "z": "ed404996291d3ded",
+        "name": "link out 4",
+        "mode": "link",
+        "links": [
+            "46b7ac9ec1871222"
+        ],
+        "x": 1385,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "1752f8e7d82f5eb6",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 19",
+        "links": [
+            "d0a4f3c18182ee4e"
+        ],
+        "x": 1535,
+        "y": 1420,
+        "wires": [
+            [
+                "5fdf4ca7e76e76e6"
+            ]
+        ]
+    },
+    {
+        "id": "d0a4f3c18182ee4e",
+        "type": "link out",
+        "z": "ed404996291d3ded",
+        "name": "link out 5",
+        "mode": "link",
+        "links": [
+            "1752f8e7d82f5eb6",
+            "984a310e1d84bf63"
+        ],
+        "x": 1085,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "984a310e1d84bf63",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 20",
+        "links": [
+            "d0a4f3c18182ee4e"
+        ],
+        "x": 1175,
+        "y": 1320,
+        "wires": [
+            [
+                "ea73cbddbffcb53e"
+            ]
+        ]
+    },
+    {
+        "id": "70fdfd3ed7c759fc",
         "type": "ui_chart",
-        "z": "7d33f045adfa2ce5",
+        "z": "ed404996291d3ded",
         "name": "",
         "group": "161fc0b22611f508",
         "order": 1,
-        "width": 0,
-        "height": 0,
+        "width": "8",
+        "height": "4",
         "label": "Dérive",
         "chartType": "line",
         "legend": "false",
@@ -1565,9 +1928,8 @@
         ],
         "outputs": 1,
         "useDifferentColor": false,
-        "className": "",
-        "x": 2270,
-        "y": 1800,
+        "x": 2690,
+        "y": 1320,
         "wires": [
             []
         ]
