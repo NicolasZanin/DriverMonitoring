@@ -16,6 +16,14 @@
         "env": []
     },
     {
+        "id": "95056920d2e391b4",
+        "type": "tab",
+        "label": "Flux 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "0504f462f986c487",
         "type": "influxdb",
         "hostname": "127.0.0.1",
@@ -213,6 +221,74 @@
         "order": 8,
         "disp": false,
         "width": "3",
+        "collapse": false
+    },
+    {
+        "id": "efdef055a66f84fc",
+        "type": "ui_tab",
+        "name": "Blinky Driver Simple",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "1f179a239394f295",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "efdef055a66f84fc",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "3f6c83fc40530c31",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "efdef055a66f84fc",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "c4458a8ab5777971",
+        "type": "ui_group",
+        "name": "Collomne 2",
+        "tab": "efdef055a66f84fc",
+        "order": 3,
+        "disp": false,
+        "width": "11",
+        "collapse": false
+    },
+    {
+        "id": "1de00478ef66c8e4",
+        "type": "ui_group",
+        "name": "Données",
+        "tab": "efdef055a66f84fc",
+        "order": 4,
+        "disp": true,
+        "width": "23",
+        "collapse": false
+    },
+    {
+        "id": "cb1319d38f752e0a",
+        "type": "ui_group",
+        "name": "Collomne 2 aprés",
+        "tab": "efdef055a66f84fc",
+        "order": 5,
+        "disp": false,
+        "width": "23",
+        "collapse": false
+    },
+    {
+        "id": "c5d2e4d132eac578",
+        "type": "ui_group",
+        "name": "Visualize",
+        "tab": "efdef055a66f84fc",
+        "order": 6,
+        "disp": false,
+        "width": "23",
         "collapse": false
     },
     {
@@ -862,7 +938,8 @@
         "wires": [
             [
                 "9981306c33188658",
-                "4f6bc1f5523f4d98"
+                "4f6bc1f5523f4d98",
+                "1d2b3a6b878a0bae"
             ]
         ]
     },
@@ -980,7 +1057,7 @@
         "id": "2b9760c2d215c9a1",
         "type": "function",
         "z": "ed404996291d3ded",
-        "name": "function_split_cardiaque",
+        "name": "function_split_acc",
         "func": "msg.timestamp = msg.payload._time;\n\nif (msg.payload._field === \"value_x\" && (msg.payload._value > 0.2 || msg.payload._value < -0.2)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}\n\nif (msg.payload._field === \"value_y\" && (msg.payload._value > 0.3 || msg.payload._value < -0.3)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}\n\nreturn null;",
         "outputs": 1,
         "timeout": 0,
@@ -988,12 +1065,13 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 2470,
+        "x": 2450,
         "y": 1340,
         "wires": [
             [
                 "488d553fc222087d",
-                "70fdfd3ed7c759fc"
+                "ef06cd2e85c5ca2d",
+                "4cf973c4c9383d56"
             ]
         ]
     },
@@ -1051,7 +1129,8 @@
         "wires": [
             [
                 "aa61fc8400637083",
-                "2e91625f303a2201"
+                "2e91625f303a2201",
+                "0c4801864eb67567"
             ]
         ]
     },
@@ -1127,7 +1206,8 @@
         "wires": [
             [
                 "a9bccde7a97339d8",
-                "cb2beef8d7fa69f6"
+                "cb2beef8d7fa69f6",
+                "282fbc4bb73564bd"
             ]
         ]
     },
@@ -1202,7 +1282,8 @@
         "y": 1440,
         "wires": [
             [
-                "31e07b02e92ebe47"
+                "31e07b02e92ebe47",
+                "9bb132b33e29368b"
             ]
         ]
     },
@@ -1232,7 +1313,7 @@
         "type": "debug",
         "z": "ed404996291d3ded",
         "name": "debug 34",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1249,7 +1330,7 @@
         "type": "debug",
         "z": "ed404996291d3ded",
         "name": "debug 35",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1525,7 +1606,12 @@
             "e2d409c4164d87d3",
             "c6fba70adc0fd0db",
             "371c5121c077dae6",
-            "b320b39b1c5284aa"
+            "b320b39b1c5284aa",
+            "ddd3840837213ca3",
+            "6f5d00cc0cddcd47",
+            "081ac20b9041ee6e",
+            "e88aa50df9039985",
+            "6852d8337b5c4108"
         ],
         "x": 1125,
         "y": 660,
@@ -1655,7 +1741,7 @@
         "y": 1320,
         "wires": [
             [
-                "70fdfd3ed7c759fc"
+                "ef06cd2e85c5ca2d"
             ]
         ]
     },
@@ -1911,49 +1997,6 @@
         ]
     },
     {
-        "id": "70fdfd3ed7c759fc",
-        "type": "ui_chart",
-        "z": "ed404996291d3ded",
-        "name": "",
-        "group": "161fc0b22611f508",
-        "order": 1,
-        "width": "11",
-        "height": "5",
-        "label": "Dérive",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "Dérive",
-        "dot": true,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": "365",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#004cff",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 3470,
-        "y": 1340,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "e613605e9b5b9f2c",
         "type": "ui_date_picker",
         "z": "ed404996291d3ded",
@@ -2131,7 +2174,7 @@
         "type": "debug",
         "z": "ed404996291d3ded",
         "name": "debug 42",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -2292,6 +2335,290 @@
         "wires": [
             [
                 "71c7c433901741ed"
+            ]
+        ]
+    },
+    {
+        "id": "ef06cd2e85c5ca2d",
+        "type": "ui_chart",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "group": "161fc0b22611f508",
+        "order": 1,
+        "width": "11",
+        "height": "5",
+        "label": "Dérive",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Somnolence",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#7300ff",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 3470,
+        "y": 1340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0c4801864eb67567",
+        "type": "ui_chart",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "group": "cb1319d38f752e0a",
+        "order": 1,
+        "width": "11",
+        "height": "6",
+        "label": "Somnolence",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Somnolence",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "365",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#7300ff",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 3490,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ddd3840837213ca3",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 27",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 3395,
+        "y": 720,
+        "wires": [
+            [
+                "0c4801864eb67567"
+            ]
+        ]
+    },
+    {
+        "id": "6f5d00cc0cddcd47",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 28",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 3395,
+        "y": 1240,
+        "wires": [
+            [
+                "4cf973c4c9383d56"
+            ]
+        ]
+    },
+    {
+        "id": "4cf973c4c9383d56",
+        "type": "ui_chart",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "group": "cb1319d38f752e0a",
+        "order": 1,
+        "width": "11",
+        "height": "6",
+        "label": "Dérive",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Somnolence",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#7300ff",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#ff0000",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 3470,
+        "y": 1260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d2b3a6b878a0bae",
+        "type": "ui_text",
+        "z": "ed404996291d3ded",
+        "group": "1de00478ef66c8e4",
+        "order": 4,
+        "width": "7",
+        "height": "1",
+        "name": "",
+        "label": "Temps de conduite :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 3520,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "081ac20b9041ee6e",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 29",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 3395,
+        "y": 100,
+        "wires": [
+            [
+                "1d2b3a6b878a0bae"
+            ]
+        ]
+    },
+    {
+        "id": "282fbc4bb73564bd",
+        "type": "ui_text",
+        "z": "ed404996291d3ded",
+        "group": "1de00478ef66c8e4",
+        "order": 4,
+        "width": "7",
+        "height": "1",
+        "name": "",
+        "label": "Temps de somnolence total :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 3540,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "e88aa50df9039985",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 30",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 3395,
+        "y": 420,
+        "wires": [
+            [
+                "282fbc4bb73564bd"
+            ]
+        ]
+    },
+    {
+        "id": "9bb132b33e29368b",
+        "type": "ui_text",
+        "z": "ed404996291d3ded",
+        "group": "1de00478ef66c8e4",
+        "order": 4,
+        "width": "7",
+        "height": "1",
+        "name": "",
+        "label": "Nombre de dérives :",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 3520,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "6852d8337b5c4108",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 31",
+        "links": [
+            "c0fe076b8533cb9a"
+        ],
+        "x": 3395,
+        "y": 1380,
+        "wires": [
+            [
+                "9bb132b33e29368b"
+            ]
+        ]
+    },
+    {
+        "id": "f13290cc7fe25819",
+        "type": "ui_button",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "group": "c5d2e4d132eac578",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Visualize",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 600,
+        "y": 980,
+        "wires": [
+            [
+                "da967c424fa11b33"
             ]
         ]
     }
