@@ -142,7 +142,7 @@
         "tab": "26b1797a2f299d3c",
         "order": 1,
         "disp": true,
-        "width": "7",
+        "width": "23",
         "collapse": false
     },
     {
@@ -152,7 +152,7 @@
         "tab": "26b1797a2f299d3c",
         "order": 2,
         "disp": false,
-        "width": "8",
+        "width": "11",
         "collapse": false
     },
     {
@@ -162,7 +162,7 @@
         "tab": "26b1797a2f299d3c",
         "order": 3,
         "disp": false,
-        "width": "8",
+        "width": "11",
         "collapse": false
     },
     {
@@ -888,7 +888,7 @@
         "type": "function",
         "z": "ed404996291d3ded",
         "name": "function_query_accelerometer",
-        "func": "const start = flow.get(\"start\");\nconst end = flow.get(\"end\");\n\nconst startTime = new Date(start).getTime() / 1000; \nconst endTime = new Date(end).getTime() / 1000;\n\nmsg = {\n    query: `from(bucket: \"mybucket\")\\n` +\n        `  |> range(start: ${startTime}, stop: ${endTime})\\n` +\n        `  |> filter(fn: (r) => r[\"_measurement\"] == \"accelerometer\")`\n};\n\nreturn msg;",
+        "func": "const start = flow.get(\"start\");\nconst end = flow.get(\"end\");\n\nmsg = {\n    query: `from(bucket: \"mybucket\")\\n` +\n        `  |> range(start: ${start}, stop: ${end})\\n` +\n        `  |> filter(fn: (r) => r[\"_measurement\"] == \"accelerometer\")`\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1027,7 +1027,7 @@
         "finalize": "",
         "libs": [],
         "x": 1000,
-        "y": 1140,
+        "y": 660,
         "wires": [
             [
                 "c0fe076b8533cb9a"
@@ -1211,7 +1211,7 @@
         "type": "function",
         "z": "ed404996291d3ded",
         "name": "function_query_cardiaque",
-        "func": "const start = flow.get(\"start\");\nconst end = flow.get(\"end\");\n\nconst startTime = new Date(start).getTime() / 1000;\nconst endTime = new Date(end).getTime() / 1000;\n\nmsg = {\n    query: `from(bucket: \"mybucket\")\\n` +\n           `  |> range(start: ${startTime}, stop: ${endTime})\\n` + \n           `  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")`\n};\n\nreturn msg;",
+        "func": "const start = flow.get(\"start\");\nconst end = flow.get(\"end\");\n\nmsg = {\n    query: `from(bucket: \"mybucket\")\\n` +\n        `  |> range(start: ${start}, stop: ${end})\\n` + \n           `  |> filter(fn: (r) => r[\"_measurement\"] == \"cardiaque\")`\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1249,7 +1249,7 @@
         "type": "debug",
         "z": "ed404996291d3ded",
         "name": "debug 35",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1308,7 +1308,7 @@
         "group": "bc962b1e502fdd92",
         "order": 4,
         "width": "7",
-        "height": "2",
+        "height": "1",
         "name": "",
         "label": "Temps de conduite :",
         "format": "{{msg.payload}}",
@@ -1372,7 +1372,7 @@
         "group": "bc962b1e502fdd92",
         "order": 4,
         "width": "7",
-        "height": "2",
+        "height": "1",
         "name": "",
         "label": "Horaires où les somnolence ont été les plus courantes :",
         "format": "{{msg.payload}}",
@@ -1388,8 +1388,8 @@
         "name": "",
         "group": "161fc0b22611f508",
         "order": 1,
-        "width": "8",
-        "height": "4",
+        "width": "11",
+        "height": "5",
         "label": "Somnolence",
         "chartType": "line",
         "legend": "false",
@@ -1399,9 +1399,9 @@
         "dot": false,
         "ymin": "",
         "ymax": "",
-        "removeOlder": 1,
+        "removeOlder": "365",
         "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
+        "removeOlderUnit": "86400",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -1431,8 +1431,8 @@
         "name": "",
         "group": "2d526cab482570ba",
         "order": 1,
-        "width": "8",
-        "height": "4",
+        "width": "11",
+        "height": "5",
         "label": "BPM",
         "chartType": "line",
         "legend": "false",
@@ -1442,9 +1442,9 @@
         "dot": false,
         "ymin": "",
         "ymax": "",
-        "removeOlder": 1,
+        "removeOlder": "365",
         "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
+        "removeOlderUnit": "86400",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -1474,8 +1474,8 @@
         "name": "",
         "group": "2d526cab482570ba",
         "order": 1,
-        "width": "8",
-        "height": "4",
+        "width": "11",
+        "height": "5",
         "label": "Variance",
         "chartType": "line",
         "legend": "false",
@@ -1485,9 +1485,9 @@
         "dot": true,
         "ymin": "",
         "ymax": "",
-        "removeOlder": 1,
+        "removeOlder": "365",
         "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
+        "removeOlderUnit": "86400",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -1528,7 +1528,7 @@
             "b320b39b1c5284aa"
         ],
         "x": 1125,
-        "y": 1140,
+        "y": 660,
         "wires": []
     },
     {
@@ -1917,8 +1917,8 @@
         "name": "",
         "group": "161fc0b22611f508",
         "order": 1,
-        "width": "8",
-        "height": "4",
+        "width": "11",
+        "height": "5",
         "label": "Dérive",
         "chartType": "line",
         "legend": "false",
@@ -1928,9 +1928,9 @@
         "dot": true,
         "ymin": "",
         "ymax": "",
-        "removeOlder": 1,
+        "removeOlder": "365",
         "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
+        "removeOlderUnit": "86400",
         "cutout": 0,
         "useOneColor": false,
         "useUTC": false,
@@ -2111,15 +2111,15 @@
         "type": "function",
         "z": "ed404996291d3ded",
         "name": "get plage",
-        "func": "const startDateMillis = flow.get(\"startDate\");\nconst startTimeMillis = flow.get(\"startTime\");\nconst endDateMillis = flow.get(\"endDate\");\nconst endTimeMillis = flow.get(\"endTime\");\n\nfunction createISODate(dateMillis, timeMillis) {\n    if (!dateMillis || !timeMillis) {\n        return null;\n    }\n\n    const date = new Date(dateMillis);\n    const time = new Date(timeMillis);\n\n    const year = date.getUTCFullYear();\n    const month = String(date.getUTCMonth() + 1).padStart(2, '0');\n    const day = String(date.getUTCDate()).padStart(2, '0');\n    const hours = String(time.getUTCHours()).padStart(2, '0');\n    const minutes = String(time.getUTCMinutes()).padStart(2, '0');\n\n    return `${year}-${month}-${day}T${hours}:${minutes}:00Z`;\n}\n\nconst startISO = createISODate(startDateMillis, startTimeMillis);\nconst endISO = createISODate(endDateMillis, endTimeMillis);\n\n// Ajouter un jour à endISO\nconst endDate = new Date(endDateMillis);\nendDate.setUTCDate(endDate.getUTCDate() + 1); // Ajouter un jour\nconst endISOWithAddedDay = createISODate(endDate.getTime(), endTimeMillis);\n\nflow.set(\"start\", startISO);\nflow.set(\"end\", endISOWithAddedDay);\n\nmsg.payload = {\n    start: startISO,\n    end: endISOWithAddedDay\n};\n\nreturn msg;",
+        "func": "const startDateMillis = flow.get(\"startDate\");\nconst startTimeMillis = flow.get(\"startTime\");\nconst endDateMillis = flow.get(\"endDate\");\nconst endTimeMillis = flow.get(\"endTime\");\n\n// Créer les objets Date\nlet startDate = new Date(startDateMillis);\nlet startTime = new Date(startTimeMillis);\nlet endDate = new Date(endDateMillis);\nlet endTime = new Date(endTimeMillis);\n\n// Ajuster l'heure de startDate et endDate avec l'heure de startTime et endTime\nstartDate.setHours(startTime.getHours()-1, startTime.getMinutes(), startTime.getSeconds(), startTime.getMilliseconds());\nendDate.setHours(endTime.getHours()-1, endTime.getMinutes(), endTime.getSeconds(), endTime.getMilliseconds());\n\n// Mettre à jour dans flow (conversion en secondes)\nflow.set(\"start\", Math.floor(startDate.getTime() / 1000));\nflow.set(\"end\", Math.floor(endDate.getTime() / 1000));\n\nmsg.payload = {\n    start: Math.floor(startDate.getTime() / 1000),\n    end: Math.floor(endDate.getTime() / 1000)\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 980,
-        "y": 920,
+        "x": 1140,
+        "y": 780,
         "wires": [
             [
                 "b6287f480353cf4a"
@@ -2139,8 +2139,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 980,
-        "y": 880,
+        "x": 1140,
+        "y": 740,
         "wires": []
     },
     {
@@ -2180,54 +2180,6 @@
         ]
     },
     {
-        "id": "418600ccb7765671",
-        "type": "link in",
-        "z": "ed404996291d3ded",
-        "name": "link in 21",
-        "links": [
-            "da967c424fa11b33"
-        ],
-        "x": 1275,
-        "y": 760,
-        "wires": [
-            [
-                "693d1b46748bd487"
-            ]
-        ]
-    },
-    {
-        "id": "48aa7011c08af00d",
-        "type": "link in",
-        "z": "ed404996291d3ded",
-        "name": "link in 22",
-        "links": [
-            "da967c424fa11b33"
-        ],
-        "x": 875,
-        "y": 1140,
-        "wires": [
-            [
-                "71c7c433901741ed"
-            ]
-        ]
-    },
-    {
-        "id": "9549701618571c97",
-        "type": "link in",
-        "z": "ed404996291d3ded",
-        "name": "link in 23",
-        "links": [
-            "da967c424fa11b33"
-        ],
-        "x": 1275,
-        "y": 1340,
-        "wires": [
-            [
-                "d408acef9282edf2"
-            ]
-        ]
-    },
-    {
         "id": "da967c424fa11b33",
         "type": "link out",
         "z": "ed404996291d3ded",
@@ -2235,27 +2187,111 @@
         "mode": "link",
         "links": [
             "418600ccb7765671",
-            "48aa7011c08af00d",
             "9549701618571c97",
-            "16177a1432c9359e"
+            "91f32bf6118efbb4",
+            "dfe43cd3f40e861f",
+            "7339e58c344c4efe"
         ],
         "x": 705,
         "y": 1020,
         "wires": []
     },
     {
-        "id": "16177a1432c9359e",
+        "id": "8f4b34137c09fab2",
+        "type": "delay",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 980,
+        "y": 780,
+        "wires": [
+            [
+                "5a5fbdf6e07aa65f"
+            ]
+        ]
+    },
+    {
+        "id": "91f32bf6118efbb4",
         "type": "link in",
         "z": "ed404996291d3ded",
         "name": "link in 24",
         "links": [
             "da967c424fa11b33"
         ],
-        "x": 875,
-        "y": 920,
+        "x": 885,
+        "y": 780,
         "wires": [
             [
-                "5a5fbdf6e07aa65f"
+                "8f4b34137c09fab2"
+            ]
+        ]
+    },
+    {
+        "id": "d44470ece9ecb920",
+        "type": "delay",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 980,
+        "y": 1020,
+        "wires": [
+            [
+                "693d1b46748bd487",
+                "d408acef9282edf2"
+            ]
+        ]
+    },
+    {
+        "id": "dfe43cd3f40e861f",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 25",
+        "links": [
+            "da967c424fa11b33"
+        ],
+        "x": 885,
+        "y": 1020,
+        "wires": [
+            [
+                "d44470ece9ecb920"
+            ]
+        ]
+    },
+    {
+        "id": "7339e58c344c4efe",
+        "type": "link in",
+        "z": "ed404996291d3ded",
+        "name": "link in 26",
+        "links": [
+            "da967c424fa11b33"
+        ],
+        "x": 885,
+        "y": 660,
+        "wires": [
+            [
+                "71c7c433901741ed"
             ]
         ]
     }
