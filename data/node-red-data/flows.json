@@ -1087,7 +1087,7 @@
         "type": "function",
         "z": "ed404996291d3ded",
         "name": "function_split_acc",
-        "func": "msg.timestamp = msg.payload._time;\n\nif (msg.payload._field === \"value_x\" && (msg.payload._value > 0.2 || msg.payload._value < -0.2)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}\n\nif (msg.payload._field === \"value_y\" && (msg.payload._value > 0.3 || msg.payload._value < -0.3)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}",
+        "func": "msg.timestamp = msg.payload._time;\n\nif (msg.payload._field === \"value_x\" && (msg.payload._value > 10.1 || msg.payload._value < -10.1)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}\n\nif (msg.payload._field === \"value_y\" && (msg.payload._value > 0.0 || msg.payload._value < -0.0)) {\n    msg.payload = msg.payload._value;\n    return msg;\n}",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -1159,8 +1159,7 @@
             [
                 "aa61fc8400637083",
                 "2e91625f303a2201",
-                "0c4801864eb67567",
-                "bdb5c08f65ba5c96"
+                "0c4801864eb67567"
             ]
         ]
     },
@@ -1643,10 +1642,7 @@
             "e88aa50df9039985",
             "6852d8337b5c4108",
             "99d994c95a91f56c",
-            "f5a16b9268c4bd58",
-            "b9e2a1e8709753a8",
             "c1ff86b77b4be043",
-            "bad5be7db201d717",
             "1030c48da0a6f1b3",
             "3019f2249d1acb55"
         ],
@@ -1924,7 +1920,8 @@
         "y": 680,
         "wires": [
             [
-                "4b06fb50e1baf3bb"
+                "4b06fb50e1baf3bb",
+                "1b5421fcab03d21b"
             ]
         ]
     },
@@ -2268,8 +2265,6 @@
         "name": "link out 6",
         "mode": "link",
         "links": [
-            "418600ccb7765671",
-            "9549701618571c97",
             "91f32bf6118efbb4",
             "dfe43cd3f40e861f",
             "7339e58c344c4efe"
@@ -2662,49 +2657,6 @@
         ]
     },
     {
-        "id": "bdb5c08f65ba5c96",
-        "type": "ui_chart",
-        "z": "ed404996291d3ded",
-        "name": "",
-        "group": "e431f4f4e0ad808a",
-        "order": 1,
-        "width": "11",
-        "height": "5",
-        "label": "Somnolence",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "Somnolence",
-        "dot": false,
-        "ymin": "",
-        "ymax": "",
-        "removeOlder": "365",
-        "removeOlderPoints": "",
-        "removeOlderUnit": "86400",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#7300ff",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#ff0000",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "x": 3490,
-        "y": 640,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "99d994c95a91f56c",
         "type": "link in",
         "z": "ed404996291d3ded",
@@ -2716,7 +2668,7 @@
         "y": 620,
         "wires": [
             [
-                "bdb5c08f65ba5c96"
+                "a34be5515fce9537"
             ]
         ]
     },
@@ -2869,22 +2821,6 @@
         "wires": []
     },
     {
-        "id": "27eb92a3271c3021",
-        "type": "ui_text",
-        "z": "ed404996291d3ded",
-        "group": "e431f4f4e0ad808a",
-        "order": 4,
-        "width": "23",
-        "height": "10",
-        "name": "",
-        "label": "Variance DATA :",
-        "format": "{{msg.payload}}",
-        "layout": "col-center",
-        "x": 3800,
-        "y": 1060,
-        "wires": []
-    },
-    {
         "id": "3019f2249d1acb55",
         "type": "link in",
         "z": "ed404996291d3ded",
@@ -3002,6 +2938,145 @@
         "wires": []
     },
     {
+        "id": "2bbcb14f640b0350",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_split_cardiaque",
+        "func": "// Enregistrer le timestamp\nmsg.timestamp = msg.payload._time;\n\n// Vérifier si le champ est \"value_x\" et la valeur dépasse les seuils\nif (msg.payload._field === \"value_x\" && (msg.payload._value > 0.0 || msg.payload._value < -0.0)) {\n    let timestamp = new Date(msg.timestamp); // Assurez-vous que msg.timestamp est en millisecondes\n    let hours = timestamp.getHours();\n    let minutes = timestamp.getMinutes();\n    \n    // Formater l'heure en ajoutant un zéro si nécessaire\n    let formattedTime = hours + \"h\" + (minutes < 10 ? \"0\" + minutes : minutes);\n    \n    // Formater la sortie pour \"value_x\"\n    msg.payload = `${msg.payload._value} : ${formattedTime}`;\n    return msg;\n}\n\n// Vérifier si le champ est \"value_y\" et la valeur dépasse les seuils\nif (msg.payload._field === \"value_y\" && (msg.payload._value > 5.3 || msg.payload._value < -5.3)) {\n    let timestamp = new Date(msg.timestamp); // Assurez-vous que msg.timestamp est en millisecondes\n    let hours = timestamp.getHours();\n    let minutes = timestamp.getMinutes();\n    \n    // Formater l'heure en ajoutant un zéro si nécessaire\n    let formattedTime = hours + \"h\" + (minutes < 10 ? \"0\" + minutes : minutes);\n    \n    // Formater la sortie pour \"value_y\"\n    msg.payload = `${msg.payload._value} : ${formattedTime}`;\n    return msg;\n}\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2690,
+        "y": 1180,
+        "wires": [
+            [
+                "4d057bdfdcd1a288",
+                "d00b2b4e702e8194"
+            ]
+        ]
+    },
+    {
+        "id": "4d057bdfdcd1a288",
+        "type": "debug",
+        "z": "ed404996291d3ded",
+        "name": "debug 45",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2760,
+        "y": 1140,
+        "wires": []
+    },
+    {
+        "id": "a34be5515fce9537",
+        "type": "ui_text",
+        "z": "ed404996291d3ded",
+        "group": "e431f4f4e0ad808a",
+        "order": 4,
+        "width": "23",
+        "height": "10",
+        "name": "",
+        "label": "Somnolence DATA :",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 3520,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "7c37911d517b7e76",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_n",
+        "func": "let payload = msg.payload;\nlet formattedPayload = \"\";\n\n// Parcourez les valeurs et ajoutez un saut de ligne toutes les 30 valeurs\nfor (let i = 0; i < payload.length; i++) {\n    formattedPayload += payload[i] + \" , \";\n\n    // Ajoutez un saut de ligne toutes les 30 valeurs\n    if ((i + 1) % 30 === 0) {\n        formattedPayload += \"\\n\";\n    }\n}\n\nmsg.payload = formattedPayload.trim(); // Supprimez les espaces et lignes inutiles\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 3250,
+        "y": 640,
+        "wires": [
+            [
+                "a34be5515fce9537"
+            ]
+        ]
+    },
+    {
+        "id": "0c2abf8e8abdb7e2",
+        "type": "join",
+        "z": "ed404996291d3ded",
+        "name": "",
+        "mode": "auto",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 3090,
+        "y": 640,
+        "wires": [
+            [
+                "7c37911d517b7e76"
+            ]
+        ]
+    },
+    {
+        "id": "1b5421fcab03d21b",
+        "type": "function",
+        "z": "ed404996291d3ded",
+        "name": "function_split_cardiaque",
+        "func": "// Convertir le timestamp en un format d'heure lisible\nlet timestamp = new Date(msg.payload._time); // Assurez-vous que msg.payload._time est en millisecondes\nlet hours = timestamp.getHours();\nlet minutes = timestamp.getMinutes();\n\n// Formater l'heure en ajoutant un zéro pour les minutes inférieures à 10\nlet formattedTime = hours + \"h\" + (minutes < 10 ? \"0\" + minutes : minutes);\n\n// Extraire la valeur et la convertir en nombre\nlet value = (Number(msg.payload._value) < 60) ? 1 : 0;\n\n// Construire le texte formaté avec la valeur et l'heure\nmsg.payload = `${value} : ${formattedTime}`;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2790,
+        "y": 640,
+        "wires": [
+            [
+                "0c2abf8e8abdb7e2"
+            ]
+        ]
+    },
+    {
+        "id": "27eb92a3271c3021",
+        "type": "ui_text",
+        "z": "ed404996291d3ded",
+        "group": "e431f4f4e0ad808a",
+        "order": 4,
+        "width": "23",
+        "height": "10",
+        "name": "",
+        "label": "Variance DATA :",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "x": 3800,
+        "y": 1060,
+        "wires": []
+    },
+    {
         "id": "d00b2b4e702e8194",
         "type": "ui_text",
         "z": "ed404996291d3ded",
@@ -3015,82 +3090,6 @@
         "layout": "col-center",
         "x": 3500,
         "y": 1180,
-        "wires": []
-    },
-    {
-        "id": "b8ee72a1235cc9be",
-        "type": "function",
-        "z": "ed404996291d3ded",
-        "name": "function_n",
-        "func": "let payload = msg.payload;\nlet formattedPayload = \"\";\n\n// Parcourez les valeurs et ajoutez un saut de ligne toutes les 30 valeurs\nfor (let i = 0; i < payload.length; i++) {\n    formattedPayload += payload[i] + \" , \";\n\n    // Ajoutez un saut de ligne toutes les 30 valeurs\n    if ((i + 1) % 30 === 0) {\n        formattedPayload += \"\\n\";\n    }\n}\n\nmsg.payload = formattedPayload.trim(); // Supprimez les espaces et lignes inutiles\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 3090,
-        "y": 1180,
-        "wires": [
-            [
-                "d00b2b4e702e8194",
-                "7ed4685bed36ca17"
-            ]
-        ]
-    },
-    {
-        "id": "2bbcb14f640b0350",
-        "type": "function",
-        "z": "ed404996291d3ded",
-        "name": "function_split_cardiaque",
-        "func": "// Enregistrer le timestamp\nmsg.timestamp = msg.payload._time;\n\n// Vérifier si le champ est \"value_x\" et la valeur dépasse les seuils\nif (msg.payload._field === \"value_x\" && (msg.payload._value > 0.2 || msg.payload._value < -0.2)) {\n    let timestamp = new Date(msg.timestamp); // Assurez-vous que msg.timestamp est en millisecondes\n    let hours = timestamp.getHours();\n    let minutes = timestamp.getMinutes();\n    \n    // Formater l'heure en ajoutant un zéro si nécessaire\n    let formattedTime = hours + \"h\" + (minutes < 10 ? \"0\" + minutes : minutes);\n    \n    // Formater la sortie pour \"value_x\"\n    msg.payload = `${msg.payload._value} : ${formattedTime}`;\n    return msg;\n}\n\n// Vérifier si le champ est \"value_y\" et la valeur dépasse les seuils\nif (msg.payload._field === \"value_y\" && (msg.payload._value > 0.3 || msg.payload._value < -0.3)) {\n    let timestamp = new Date(msg.timestamp); // Assurez-vous que msg.timestamp est en millisecondes\n    let hours = timestamp.getHours();\n    let minutes = timestamp.getMinutes();\n    \n    // Formater l'heure en ajoutant un zéro si nécessaire\n    let formattedTime = hours + \"h\" + (minutes < 10 ? \"0\" + minutes : minutes);\n    \n    // Formater la sortie pour \"value_y\"\n    msg.payload = `${msg.payload._value} : ${formattedTime}`;\n    return msg;\n}\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 2690,
-        "y": 1180,
-        "wires": [
-            [
-                "4d057bdfdcd1a288",
-                "b8ee72a1235cc9be"
-            ]
-        ]
-    },
-    {
-        "id": "4d057bdfdcd1a288",
-        "type": "debug",
-        "z": "ed404996291d3ded",
-        "name": "debug 45",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 2760,
-        "y": 1140,
-        "wires": []
-    },
-    {
-        "id": "7ed4685bed36ca17",
-        "type": "debug",
-        "z": "ed404996291d3ded",
-        "name": "debug 46",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 3120,
-        "y": 1140,
         "wires": []
     }
 ]
