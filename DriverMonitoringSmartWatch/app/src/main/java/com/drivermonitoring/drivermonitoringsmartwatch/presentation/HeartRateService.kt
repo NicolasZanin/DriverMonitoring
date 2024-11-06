@@ -33,7 +33,7 @@ class HeartRateService : Service(), SensorEventListener {
         const val NOTIFICATION_CHANNEL_ID = "heart_rate_channel"
         const val NOTIFICATION_ID = 1
         private const val PORT = "1880"
-        const val IP = "192.168.1.109:$PORT"
+        const val IP = "192.168.181.111:$PORT"
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -60,25 +60,6 @@ class HeartRateService : Service(), SensorEventListener {
         }
         return START_STICKY;
     }
-
-    /*override fun onCreate() {
-        super.onCreate()
-        Log.e("HeartRateService", "onCreate")
-
-        startForeground(NOTIFICATION_ID, createNotification())
-        // Initialisation du SensorManager et du capteur de rythme cardiaque
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        heartRateSensor = sensorManager.getDefaultSensor(Sensor.TYPE_HEART_RATE)
-
-        if (heartRateSensor != null) {
-            sensorManager.registerListener(this, heartRateSensor, SensorManager.SENSOR_DELAY_NORMAL)
-            Log.e("HeartRateService", "ça fonctionne ici")
-        } else {
-            Log.e("HeartRateService", "Capteur de rythme cardiaque non disponible")
-            stopSelf()
-        }
-        return START_STICKY;
-    }*/
 
     override fun onSensorChanged(event: SensorEvent?) {
         event?.let {
