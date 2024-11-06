@@ -232,36 +232,6 @@
         "hidden": false
     },
     {
-        "id": "1f179a239394f295",
-        "type": "ui_group",
-        "name": "Default",
-        "tab": "efdef055a66f84fc",
-        "order": 2,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "3f6c83fc40530c31",
-        "type": "ui_group",
-        "name": "Default",
-        "tab": "efdef055a66f84fc",
-        "order": 3,
-        "disp": true,
-        "width": "6",
-        "collapse": false
-    },
-    {
-        "id": "c4458a8ab5777971",
-        "type": "ui_group",
-        "name": "Collomne 2",
-        "tab": "efdef055a66f84fc",
-        "order": 3,
-        "disp": false,
-        "width": "11",
-        "collapse": false
-    },
-    {
         "id": "1de00478ef66c8e4",
         "type": "ui_group",
         "name": "Données",
@@ -580,7 +550,8 @@
         "y": 240,
         "wires": [
             [
-                "b131c8da435b513a"
+                "b131c8da435b513a",
+                "e0f9fcba1c693859"
             ]
         ]
     },
@@ -719,6 +690,22 @@
         "bucket": "mybucket",
         "x": 1500,
         "y": 340,
+        "wires": []
+    },
+    {
+        "id": "e0f9fcba1c693859",
+        "type": "debug",
+        "z": "7d33f045adfa2ce5",
+        "name": "debug 46",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 180,
         "wires": []
     },
     {
