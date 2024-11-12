@@ -33,7 +33,7 @@ class HeartRateService : Service(), SensorEventListener {
         const val NOTIFICATION_CHANNEL_ID = "heart_rate_channel"
         const val NOTIFICATION_ID = 1
         private const val PORT = "1880"
-        const val IP = "192.168.181.111:$PORT"
+        const val IP = "192.168.181.32:$PORT"
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -71,6 +71,7 @@ class HeartRateService : Service(), SensorEventListener {
                         val result =
                             fetchUrl("http://$IP/app/cardiaque/$heartRate/$currentTimestamp")
                         println(result)
+                        getPowerConsumptionUntilNow()
                     }
                 }
                 Log.d("HeartRateService", "Rythme cardiaque en arrière-plan : $heartRate")
@@ -104,11 +105,13 @@ class HeartRateService : Service(), SensorEventListener {
     }
 
     private fun incrementPowerConsumption(sensor: Sensor?) {
+        val sensorPower = sensor?.power
+        Log.d("Power consumption", "$sensorPower")
         powerConsumption += sensor?.power ?: 0f
     }
 
     private fun getPowerConsumptionUntilNow() {
-        println(powerConsumption)
+        println("$powerConsumption mA")
     }
 
     private suspend fun fetchUrl(url: String): String? {

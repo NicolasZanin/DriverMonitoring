@@ -50,7 +50,7 @@ import java.util.concurrent.TimeUnit
 
 class MainActivity : ComponentActivity() {
 
-    private lateinit var bleServer: BleServerLouis
+    private lateinit var bleServer: BleServer
     private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,7 +77,7 @@ class MainActivity : ComponentActivity() {
         }
 
         // Initialiser et démarrer le serveur BLE
-        bleServer = BleServerLouis(this)
+        bleServer = BleServer(this)
         bleServer.startServer()
 
         // fin bluetooth
@@ -161,7 +161,7 @@ class MainActivity : ComponentActivity() {
         if (requestCode == PERMISSION_REQUEST_CODE) {
             if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
                 // Toutes les permissions sont accordées, démarrer le serveur
-                bleServer = BleServerLouis(this)
+                bleServer = BleServer(this)
                 bleServer.startServer()
             } else {
                 // Gérer le cas où les permissions sont refusées
@@ -257,7 +257,7 @@ fun Greeting(greetingName: String) {
         }
         Spacer(modifier = Modifier.height(16.dp)) // Spacer for spacing between button and text
         Text(
-            text = "Your current rest",
+            text = "Heart rate collected for safety",
             textAlign = TextAlign.Center,
             color = MaterialTheme.colors.primary
         )
