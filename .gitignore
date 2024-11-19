@@ -1,0 +1,6 @@
+node_modules
+.npm
+data/node-red-data/.config*
+data/node-red-data/.flows.json.backup
+data/node-red-data/flows_cred.json
+data/node-red-data/.flows_cred.json.backup

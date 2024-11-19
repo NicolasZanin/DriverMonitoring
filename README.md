@@ -42,6 +42,8 @@ Le but de ce projet est d'assister les conducteurs de bus/camions lors de leurs 
 
 username: driver   
 password: driver_password
+token_nico: XmjNhBCw_aL_Hh5KQNJpayHK_nX3b7Dsd9GfK1lZbxOXS5iGo0IgkC5ES-dsPx9i1orSIsX6V4AD5H8BoAq3Cw==
+token_julian: uVMP-K4W3dwoVL4gsEoJvRagFk99UplqA92lTtpiDywjExDKSZIumDeAyLS_scm6e6mALz3tNZxfZRKTO-0Ysw==
 
 ### Grafana
 
