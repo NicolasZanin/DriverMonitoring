@@ -4,6 +4,8 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
+        "dashboard-evi": "~1.0.2",
+        "node-red-contrib-chartjs": "~0.5.2",
         "node-red-contrib-influxdb": "~0.7.0",
         "node-red-dashboard": "~3.6.5"
     }

@@ -5,6 +5,8 @@ services:
       - TZ=Europe/Amsterdam
     ports:
       - 1880:1880
+    command:
+      bash -c "npm install node-red-contrib-influxdb && npm install node-red-dashboard && npm start"
     volumes:
       - ./data/node-red-data:/data
     networks:
@@ -21,6 +23,7 @@ services:
       - DOCKER_INFLUXDB_INIT_PASSWORD=driver_password
       - DOCKER_INFLUXDB_INIT_ORG=myorg
       - DOCKER_INFLUXDB_INIT_BUCKET=mybucket
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=myadmintoken
     depends_on:
       - node-red
     volumes:
